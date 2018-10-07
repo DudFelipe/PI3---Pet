@@ -127,12 +127,12 @@ html, body {
 
 
 
-input:invalid+span:after {
+input{
     content: '✖';
 
 }
 
-input:valid+span:after {
+input {
     content: '✓';
 }
 input {
@@ -143,9 +143,7 @@ input {
 form{
     font-size: 16px;
     position:relative;
-    float:left;
+  
 }
-a dialog{
-    align:left;
-}
+
 
