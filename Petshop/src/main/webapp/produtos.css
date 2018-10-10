@@ -3,8 +3,8 @@ html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
   }
   .demo-avatar {
-    width: 30px;
-    height: 30px;
+    width: 48px;
+    height: 48px;
     border-radius: 24px;
   }
   .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
@@ -120,18 +120,5 @@ html, body {
   _:-ms-input-placeholder, :root .demo-graph {
     max-height: 300px;
   }
-
-  .mainAct{
-    margin-left: auto;
-    margin-right: auto;
-    table-layout: fixed;
-    border-collapse: collapse;
-    z-index: 1; position:relative;
-  }
  
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
   
