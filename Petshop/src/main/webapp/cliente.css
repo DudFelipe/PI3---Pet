@@ -146,4 +146,10 @@ form{
   
 }
 
-
+b div{
+    width:1050px;
+    height: 650px;;
+}
+a div{
+    position: left;
+}

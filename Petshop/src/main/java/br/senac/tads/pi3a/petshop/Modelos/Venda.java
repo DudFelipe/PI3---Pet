@@ -6,6 +6,7 @@
 package br.senac.tads.pi3a.petshop.Modelos;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 /**
  *
@@ -13,33 +14,56 @@ import java.util.List;
  */
 public class Venda {
     private Cliente cliente;
+    private Pet pet;
     private Funcionario funcionario;
     private List<Produto> produtos;
+    private List<Servico> servicos;
+    private BigDecimal valorTotal;
+    private boolean fechada;
 
     public Venda() {
         
     }
     
-    public Venda(Cliente cliente, List<Produto> produtos, Funcionario funcionario) {
+    public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, Funcionario funcionario) {
         this.cliente = cliente;
+        this.pet = pet;
         this.produtos = produtos;
+        this.servicos = servicos;
         this.funcionario = funcionario;
+        
     }
 
     public Cliente getCliente() {
-        return cliente;
+        return this.cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
+    public Pet getPet() {
+        return this.pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }    
+
     public List<Produto> getProdutos() {
-        return produtos;
+        return this.produtos;
     }
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
+    }
+    
+    public List<Servico> getServicos() {
+        return this.servicos;
+    }
+
+    public void setServicos(List<Servico> servicos) {
+        this.servicos = servicos;
     }
 
     public Funcionario getFuncionario() {
@@ -50,5 +74,11 @@ public class Venda {
         this.funcionario = funcionario;
     }
     
+    public void calculaTotal(){
+        
+    }
     
+    public int registraConta(){
+        return 0;
+    }
 }
