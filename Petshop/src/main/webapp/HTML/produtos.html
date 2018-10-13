@@ -99,33 +99,33 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="servico">Nome</label>
-                            <input type="text" class="form-control" id="servico" >
+                            <label for="produtos">Nome</label>
+                            <input type="text" class="form-control" id="produtos" >
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="calendario">Fabricante</label>
-                            <input type="text" class="form-control" id="fabricante" >
+                            <label for="produtos">Fabricante</label>
+                            <input type="text" class="form-control" id="produtos" >
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="servico">Modelo</label>
-                            <input type="text" class="form-control" id="modelo" >
+                            <label for="produtos">Modelo</label>
+                            <input type="text" class="form-control" id="produtos" >
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="inputState">Preço</label>
-                              <input type="text" class="form-control" id="preco">
+                            <label for="produtos">Preço</label>
+                              <input type="text" class="form-control" id="produtos">
                         </div>
                     </div>
 
                     <div class="form-row">
                         
                         <div class="form-group col-md-6">
-                            <label for="servico">Quantidade</label>
-                            <input type="text" class="form-control" id="quantidade" >
+                            <label for="produtos">Quantidade</label>
+                            <input type="text" class="form-control" id="produtos" >
                         </div>
 
                       
@@ -133,8 +133,8 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="servico">Cód. Barras</label>
-                            <input type="text" class="form-control" id="codbarras" >
+                            <label for="produtos">Cód. Barras</label>
+                            <input type="text" class="form-control" id="produtos" >
                         </div>
 
                   
@@ -187,17 +187,16 @@
         </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 
 
 <script type="text/javascript">
-
     $(document).ready( function () {
+
         $('#tabelaprodutos').DataTable( {
             "language": {
                 "lengthMenu": "Mostrando _MENU_ resultados por página",
