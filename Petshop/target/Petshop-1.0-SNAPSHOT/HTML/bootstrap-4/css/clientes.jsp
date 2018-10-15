@@ -1,3 +1,10 @@
+<%-- 
+    Document   : clientes
+    Created on : Oct 11, 2018, 8:14:50 PM
+    Author     : giovanebarreira
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>PetShop TADES - Produtos</title>
+    <title>PetShop TADES</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -32,9 +39,9 @@
                     </ul>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="#produtos" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-list-alt"></i>
+                        <i class="glyphicon glyphicon-heart"></i>
                         Produtos
                     </a>
                     <ul class="collapse list-unstyled" id="produtos">
@@ -49,20 +56,20 @@
                         Serviços
                     </a>
                     <ul class="collapse list-unstyled" id="servicos">
-                        <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/servicos.html">Cadastrar um serviço</a></li>
+                        <li><a href="#">Cadastrar um serviço</a></li>
                         <li><a href="#">Listar serviços</a></li>
                     </ul>
                 </li>
 
-                <li>
-                <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                    <i class="glyphicon glyphicon-user"></i>
-                    Clientes
-                </a>
-                <ul class="collapse list-unstyled" id="clientes">
-                    <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/clientes.html">Cadastrar um cliente</a></li>
-                    <li><a href="#">Listar clientes</a></li>
-                </ul>
+                <li class="active">
+                    <a href="#clientes" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Clientes
+                    </a>
+                    <ul class="collapse list-unstyled" id="clientes">
+                        <li><a href="#">Cadastrar um cliente</a></li>
+                        <li><a href="#">Listar clientes</a></li>
+                    </ul>
                 </li>
 
                 <li>
@@ -74,7 +81,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="glyphicon glyphicon-log-out"></i>
+                        <i class="glyphicon glyphicon-off"></i>
                         Sair
                     </a>
                 </li>
@@ -83,14 +90,14 @@
 
         <div id="content">
             <nav class="navbar navbar-default">
-                    <div style="font-size: 20px; text-align: center;">Gerenciar Produtos</div>
+                    <div style="font-size: 20px; text-align: center;">Gerenciar Clientes</div>
                 </nav>
 
 
 
                 <div style="margin-bottom: 15px;">
-                    <button type="button" class="btn btn-success btn-lg" id="liberacadastro">Cadastro</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Pesquisar</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberacadastro">Cadastro</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Listar</button>
                 </div>
 
             <div id="cadastro">
@@ -98,44 +105,57 @@
                
                 <form>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="produtos">Nome</label>
-                            <input type="text" class="form-control" id="produtos" >
+                        <div class="form-group col-md-8">
+                            <label for="servico">Nome</label>
+                            <input type="text" class="form-control" id="servico" >
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="produtos">Fabricante</label>
-                            <input type="text" class="form-control" id="produtos" >
+                        <div class="form-group col-md-4">
+                            <label for="calendario">Data de Nascimento</label>
+                            <input type="text" class="form-control" id="calendario" >
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="produtos">Modelo</label>
-                            <input type="text" class="form-control" id="produtos" >
+                            <label for="servico">CPF</label>
+                            <input type="text" class="form-control" id="servico" >
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="produtos">Preço</label>
-                              <input type="text" class="form-control" id="produtos">
+                            <label for="inputState">Sexo</label>
+                              <select id="inputState" class="form-control">
+                                <option selected>Selecione...</option>
+                                <option value="0">Masculino</option>
+                                <option value="1">Feminino</option>
+                              </select>
                         </div>
                     </div>
 
                     <div class="form-row">
                         
                         <div class="form-group col-md-6">
-                            <label for="produtos">Quantidade</label>
-                            <input type="text" class="form-control" id="produtos" >
+                            <label for="servico">RG</label>
+                            <input type="text" class="form-control" id="servico" >
                         </div>
 
-                      
+                        <div class="form-group col-md-6" style="min-height: 59px;">
+                        </div>
+                        
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="produtos">Cód. Barras</label>
-                            <input type="text" class="form-control" id="produtos" >
+                            <label for="servico">Telefone</label>
+                            <input type="text" class="form-control" id="servico" >
                         </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="servico">Email</label>
+                            <input type="text" class="form-control" id="servico" >
+                        </div>
+                        
+                    </div>
 
                   
 
@@ -149,35 +169,35 @@
                         </div>
                     </div>
 
+
+
+
                 </form>
 
 
             </div>
-        </div>
 
             <div id="pesquisa" style="display: none">
 
-                <table class="table" id="tabelaprodutos">
+                <table class="table" id="tabelaservicos">
                   <thead>
                     <tr>
-                      <th scope="col"> Cód.Barras</th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Fabricante</th>
-                      <th scope="col">Modelo</th>
-                      <th scope="col">Preço R$</th>
-                      <th scope="col">Quantidade</th>
+                      <th scope="col">CPF</th>
+                      <th scope="col">RG</th>
+                      <th scope="col">Telefone</th>
+                      <th scope="col">Email</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Excluir</th>
                   </tr>
               </thead>
               <tbody>
                 <tr>
-                    <td scope="row">2345678</td>
-                    <td scope="row">Ração 15 kgs</th>
-                    <td>Royal Canin</td>
-                    <td>Adultos</td>
-                    <td>150,00</td>
-                    <td>20</td>
+                    <td scope="row">Joãozinho</th>
+                    <td>02578546987</td>
+                    <td>894659740</td>
+                    <td>(11) 9 7565-7462</td>
+                    <td>joaozinho@hotmail.com</td>
                     <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
                     <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                 </tr>
@@ -190,17 +210,19 @@
         </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 
 
 <script type="text/javascript">
     $(document).ready( function () {
+        $( "#calendario" ).datepicker();
 
-        $('#tabelaprodutos').DataTable( {
+        $('#tabelaservicos').DataTable( {
             "language": {
                 "lengthMenu": "Mostrando _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado - desculpe.",
