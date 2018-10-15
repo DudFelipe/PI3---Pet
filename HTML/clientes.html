@@ -34,7 +34,7 @@
 
                 <li>
                     <a href="#produtos" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-heart"></i>
+                        <i class="glyphicon glyphicon-tags"></i>
                         Produtos
                     </a>
                     <ul class="collapse list-unstyled" id="produtos">
@@ -45,7 +45,7 @@
 
                 <li>
                     <a href="#servicos" data-toggle="collapse" aria-expanded="false">
-                        <i class="glyphicon glyphicon-home"></i>
+                        <i class="glyphicon glyphicon-list-alt"></i>
                         Serviços
                     </a>
                     <ul class="collapse list-unstyled" id="servicos">
@@ -74,7 +74,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="glyphicon glyphicon-off"></i>
+                        <i class="glyphicon glyphicon-logout"></i>
                         Sair
                     </a>
                 </li>
@@ -90,12 +90,10 @@
 
                 <div style="margin-bottom: 15px;">
                     <button type="button" class="btn btn-secondary btn-lg" id="liberacadastro">Cadastro</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Listar</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Pesquisar</button>
                 </div>
 
-            <div id="cadastro">
-
-               
+            <div id="cadastro cliente">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-8">
@@ -149,8 +147,35 @@
                         </div>
                         
                     </div>
+         
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="servico">Nome do pet</label>
+                            <input type="text" class="form-control" id="servico" >
+                        </div>
 
-                  
+                        <div class="form-group col-md-6">
+                            <label for="servico">Raça</label>
+                            <input type="text" class="form-control" id="servico" >
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Tamanho</label>
+                              <select id="inputState" class="form-control">
+                                <option selected>Selecione...</option>
+                                <option value="0">Pequeno</option>
+                                <option value="1">Médio</option>
+                                <option value="2">Grande</option>
+                              </select>
+                        </div>
+                            <div class="form-group col-md-6">
+                                    <label for="servico">Idade</label>
+                                    <input type="number" class="form-control" id="servico" >
+                                </div>
+                    </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
@@ -162,12 +187,7 @@
                         </div>
                     </div>
 
-
-
-
                 </form>
-
-
             </div>
 
             <div id="pesquisa" style="display: none">
