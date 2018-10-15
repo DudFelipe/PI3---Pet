@@ -14,19 +14,20 @@ import java.math.BigDecimal;
 public class Servico {
     private String nome;
     private BigDecimal preco;
-    private int tamAnimal;
+    private String tipoAnimal;
+    private int porteAnimal;
 
     public Servico() {
     }
 
-    public Servico(String nome, BigDecimal preco, int tamAnimal) {
+    public Servico(String nome, BigDecimal preco, int porte) {
         this.nome = nome;
         this.preco = preco;
-        this.tamAnimal = tamAnimal;
+        this.porteAnimal = porte;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -34,19 +35,28 @@ public class Servico {
     }
 
     public BigDecimal getPreco() {
-        return preco;
+        return this.preco;
     }
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
-    public int getTamAnimal() {
-        return tamAnimal;
+    public String getTipoAnimal() {
+        return this.tipoAnimal;
     }
 
-    public void setTamAnimal(int tamAnimal) {
-        this.tamAnimal = tamAnimal;
+    public void setTipoAnimal(String tipo) {
+        this.tipoAnimal = tipo;
+    }    
+    
+    
+    public int getPorteAnimal() {
+        return this.porteAnimal;
+    }
+
+    public void setPorteAnimal(int porteAnimal) {
+        this.porteAnimal = porteAnimal;
     }
     
     

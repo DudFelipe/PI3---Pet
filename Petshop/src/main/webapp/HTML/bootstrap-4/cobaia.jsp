@@ -1,3 +1,10 @@
+<%-- 
+    Document   : cobaia
+    Created on : Oct 11, 2018, 8:08:23 PM
+    Author     : giovanebarreira
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -10,7 +17,8 @@
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="cobaia.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cobaia.css" />
+        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="cobaia.js"></script>
     
