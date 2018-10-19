@@ -86,17 +86,34 @@
                     <div style="font-size: 20px; text-align: center;">Extrair Relátorios</div>
                 </nav>
 
-                <div style="margin-bottom: 5px;">
-                    <center>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberavendas"  ><i class="fas fa-book-open"></i> Vendas</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberainventario">Inventário</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberacadastros">Cadastros</button>
-                </center>
+                <div style="margin-bottom: 4px;">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-6">
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberavendas"  >
+                             <i class="fas fa-shopping-cart"></i> Vendas</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberainventario">
+                            <i class="fas fa-clipboard-list"></i> Inventário</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberacadastros">
+                            <i class="fas fa-id-badge"></i> Cadastros</button>
+                        </div>
+                        <div class="form-group col-md-3"></div>
                 </div>
                 
                 
 
     <div id="rvendas" style="display: none">
+        <div class="row">
+            <div class="form-group col-md-2">
+                
+                    <label for="inputState">Tipo de relatorio:</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>Selecione...</option>
+                        <option value="0">Semanal</option>
+                        <option value="1">Quinzenal</option>
+                        <option value="2">Mensal</option>
+                      </select>
+                    </div> 
+                </div>
         <table class="table" id="tabelavendas">
                 <thead>
                     <tr>
@@ -123,12 +140,24 @@
       </table>
       <div style="margin-bottom: 2px;">
         <center>
-    <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+    <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">
+            <i class="fas fa-cloud-download-alt"></i> Exportar CSV</button>
     </center>
     </div>
   </div>
 
   <div id="inventario" style="display: none">
+        <div class="form-group col-md-2">
+                <div class="row">
+                <label for="inputState">Tipo de relatorio:</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="0">Semanal</option>
+                    <option value="1">Quinzenal</option>
+                    <option value="2">Mensal</option>
+                  </select>
+                </div>    
+            </div>
     <table class="table" id="tabelainventario">
       <thead>
         <tr>
@@ -155,12 +184,24 @@
 </table>
 <div style="margin-bottom: 2px;">
     <center>
-<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">
+        <i class="fas fa-cloud-download-alt"></i> Exportar CSV</button>
 </center>
 </div>
 </div>
 
 <div id="cadastros" style="display: none">
+        <div class="form-group col-md-2">
+                <div class="row">
+                <label for="inputState">Tipo de relatorio:</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="0">Semanal</option>
+                    <option value="1">Quinzenal</option>
+                    <option value="2">Mensal</option>
+                  </select>
+                </div>    
+            </div>
     <table class="table" id="tabelacadastros">
       <thead>
         <tr>
@@ -187,7 +228,8 @@
 </table>
 <div style="margin-bottom: 2px;">
     <center>
-<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">
+        <i class="fas fa-cloud-download-alt"></i> Exportar CSV</button>
 </center>
 </div>
 </div>
