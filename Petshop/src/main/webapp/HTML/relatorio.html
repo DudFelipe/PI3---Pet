@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>PetShop TADES - Relatorios</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png">
+                <strong></strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p style="text-align: center; color: white">Nome do Funcionário</p>
+
+                <li>
+                    <a href="#vendas" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        Vendas
+                    </a>
+                    <ul class="collapse list-unstyled" id="vendas">
+                        <li><a href="#">Realizar uma venda</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#produtos" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-list-alt"></i>
+                        Produtos
+                    </a>
+                    <ul class="collapse list-unstyled" id="produtos">
+                        <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/produtos.html">Cadastrar um produto</a></li>
+                        <li><a href="#">Listar produtos</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#servicos" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Serviços
+                    </a>
+                    <ul class="collapse list-unstyled" id="servicos">
+                        <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/servicos.html">Cadastrar um serviço</a></li>
+                        <li><a href="#">Listar serviços</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#clientes" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-user"></i>
+                        Clientes
+                    </a>
+                    <ul class="collapse list-unstyled" id="clientes">
+                        <li><a href="#">Cadastrar um cliente</a></li>
+                        <li><a href="#">Listar clientes</a></li>
+                    </ul>
+                </li>
+
+                <li  class="active">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-stats"></i>
+                        Relatórios
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-log-out"></i>
+                        Sair
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-default">
+                    <div style="font-size: 20px; text-align: center;">Extrair Relátorios</div>
+                </nav>
+
+                <div style="margin-bottom: 5px;">
+                    <center>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberavendas" style="background-color:rgba(5, 176, 219, 0.678);">Vendas</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberainventario" style="background-color:rgba(47, 135, 218, 0.562);" >Inventário</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="liberacadastros" style="background-color:rgba(6, 4, 139, 0.651);" >Cadastros</button>
+                </center>
+                </div>
+                
+                
+
+    <div id="rvendas" style="display: none">
+        <table class="table" id="tabelavendas">
+                <thead>
+                    <tr>
+                      <th scope="col">N° do pedido</th>
+                      <th scope="col">Cod. do Cliente</th>
+                      <th scope="col">Nome do Cliente</th>
+                      <th scope="col">Data da venda</th>
+                      <th scope="col">Valor da venda</th>
+                      <th scope="col">Editar</th>
+                      <th scope="col">Excluir</th>
+                  </tr>
+              </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">1002</th>
+                    <td>421</td>
+                    <td>Jair Bolsomito</td>
+                    <td>28/10/2018</td>
+                    <td>R$1.400,00</td>
+                    <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                </tr>   
+          </tbody>
+      </table>
+      <div style="margin-bottom: 2px;">
+        <center>
+    <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+    </center>
+    </div>
+  </div>
+
+  <div id="inventario" style="display: none">
+    <table class="table" id="tabelainventario">
+      <thead>
+        <tr>
+          <th scope="col">Cod. do produto</th>
+          <th scope="col">Nome do produto</th>
+          <th scope="col">Fabricante</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Excluir</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td scope="row">203</th>
+        <td>Bolsa #LulaLivre</td>
+        <td>Haddad Interprises</td>
+        <td>1,500</td>
+        <td>R$14,00</td>
+        <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+    </tr>   
+</tbody>
+</table>
+<div style="margin-bottom: 2px;">
+    <center>
+<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+</center>
+</div>
+</div>
+
+<div id="cadastros" style="display: none">
+    <table class="table" id="tabelacadastros">
+      <thead>
+        <tr>
+          <th scope="col">Cod. do funcionario</th>
+          <th scope="col">Nome do funcionario</th>
+          <th scope="col">Area</th>
+          <th scope="col">Filial</th>
+          <th scope="col">Salário</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Excluir</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td scope="row">203</th>
+        <td>Luiz Ignacio Lula da Silva</td>
+        <td>Financeiro</td>
+        <td>Brasilia</td>
+        <td>R$ 145.230,00</td>
+        <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+    </tr>   
+</tbody>
+</table>
+<div style="margin-bottom: 2px;">
+    <center>
+<button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros">Exportar CSV</button>
+</center>
+</div>
+</div>
+
+</div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $( "#calendario" ).datepicker();
+
+        $('#tabelaVendas').DataTable( {
+            "language": {
+                "lengthMenu": "Mostrando _MENU_ resultados por página",
+                "zeroRecords": "Nada encontrado - desculpe.",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Não há dados para mostrar",
+                "infoFiltered": "(filtrado no total de _MAX_ resultados)",
+                "search": "Procurar: ",
+                "paginate": {
+                "first":      "Primeiro",
+                "last":       "Último",
+                "next":       "Próximo",
+                "previous":   "Anterior"
+            },
+            }
+        } );
+    } );
+
+    $("#liberavendas").on("click", function() {
+        $("#rvendas").show();
+        $("#inventario").hide();
+        $("#cadastros").hide();
+
+    });
+
+    $("#liberainventario").on("click", function() {
+        $("#rvendas").hide();
+        $("#inventario").show();
+        $("#cadastros").hide();
+    });
+
+    $("#liberacadastros").on("click", function() {
+        $("#rvendas").hide();
+        $("#inventario").hide();
+        $("#cadastros").show();
+    });
+</script>
+</body>
+</html>
