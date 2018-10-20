@@ -82,8 +82,7 @@
                             </div>
                         </form>
                     </c:when>
-                    <c:otherwise> 
-                        
+                    <c:otherwise>
                         <form action="${pageContext.request.contextPath}/AlterarClienteServlet?id=${cliente.getId()}" method="post"> 
                             <div>
                                 <label>Nome</label>
