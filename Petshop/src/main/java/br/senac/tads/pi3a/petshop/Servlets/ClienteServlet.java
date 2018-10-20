@@ -87,6 +87,9 @@ public class ClienteServlet extends HttpServlet {
             ex.printStackTrace();
         }
         
+        boolean manutencao = false;
+        request.setAttribute("manutencao", manutencao);
+        
         //Depois de todo o processamento, caso não ocorra nenhum erro, a requisição é enviada novamente para a página cliente.jsp
         //para que o usuário possa realizar outra inserção se desejar.
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cliente.jsp");
