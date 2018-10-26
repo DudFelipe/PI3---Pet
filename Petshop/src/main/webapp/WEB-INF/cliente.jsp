@@ -193,7 +193,7 @@
                         <tbody>
                             <c:forEach items="${clientes}" var="c">
                                 <tr>
-                                    <td scope="row"><c:out value="${c.id}" /></th>
+                                    <td scope="row"><c:out value="${c.id}" /></td>
                                     <td><c:out value="${c.nome}" /></td>
                                     <td><c:out value="${c.dtNascimento}" /></td>
                                     <td><c:out value="${c.cpf}" /></td>
