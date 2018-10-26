@@ -129,9 +129,33 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label>Tamanho do Animal</label><br>
-                                Pequeno: <input type="radio" class="form-check-input" name="tamanho" value="1" > | 
-                                Médio: <input type="radio" class="form-check-input" name="tamanho" value="2" > |
-                                Grande: <input type="radio" class="form-check-input" name="tamanho" value="3" >
+                                Pequeno:
+                                <c:choose>
+                                    <c:when test="${servico.tamanhoAnimal == 1}">
+                                        <input type="radio" class="form-check-input" name="tamanho" value="1" checked="checked" > | 
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input type="radio" class="form-check-input" name="tamanho" value="1">
+                                    </c:otherwise>
+                                </c:choose>
+                                Médio: 
+                                <c:choose>
+                                    <c:when test="${servico.tamanhoAnimal == 2}">
+                                        <input type="radio" class="form-check-input" name="tamanho" value="2" checked="checked"> |
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input type="radio" class="form-check-input" name="tamanho" value="2">
+                                    </c:otherwise>
+                                </c:choose>
+                                Grande:
+                                <c:choose>
+                                    <c:when test="${servico.tamanhoAnimal == 3}">
+                                        <input type="radio" class="form-check-input" name="tamanho" value="3" checked="checked" >
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input type="radio" class="form-check-input" name="tamanho" value="3">
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
 
