@@ -12,52 +12,52 @@ import java.math.BigDecimal;
  * @author Dud Felipe
  */
 public class Servico {
-    private String nome;
+    private int id;
+    private String descricao;
     private BigDecimal preco;
-    private String tipoAnimal;
-    private int porteAnimal;
+    private int tamanhoAnimal;
 
     public Servico() {
     }
 
-    public Servico(String nome, BigDecimal preco, int porte) {
-        this.nome = nome;
+    public Servico(int id, String descricao, BigDecimal preco, int tamanhoAnimal) {
+        this.id = id;
+        this.descricao = descricao;
         this.preco = preco;
-        this.porteAnimal = porte;
+        this.tamanhoAnimal = tamanhoAnimal;
     }
 
-    public String getNome() {
-        return this.nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public BigDecimal getPreco() {
-        return this.preco;
+        return preco;
     }
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
-    public String getTipoAnimal() {
-        return this.tipoAnimal;
+    public int getTamanhoAnimal() {
+        return tamanhoAnimal;
     }
 
-    public void setTipoAnimal(String tipo) {
-        this.tipoAnimal = tipo;
-    }    
-    
-    
-    public int getPorteAnimal() {
-        return this.porteAnimal;
+    public void setTamanhoAnimal(int tamanhoAnimal) {
+        this.tamanhoAnimal = tamanhoAnimal;
     }
 
-    public void setPorteAnimal(int porteAnimal) {
-        this.porteAnimal = porteAnimal;
-    }
-    
     
 }
