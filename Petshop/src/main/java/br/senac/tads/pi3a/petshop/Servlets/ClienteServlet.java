@@ -8,12 +8,10 @@ package br.senac.tads.pi3a.petshop.Servlets;
 import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +37,17 @@ public class ClienteServlet extends HttpServlet {
         boolean manutencao = false; 
         
         //Essa flag é então enviada como um atributo para a página que será chamada, que no caso é a página cliente.jsp
+        List<Cliente> clientes = null; //É criado uma lista de clientes para que sejam exibidos na página cliente.jsp
+        try{
+            clientes = ClienteBLL.listar(); //É chamado o método listar que irá montar a lista com os clientes já existentes
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }
+        
         request.setAttribute("manutencao", manutencao);
+        request.setAttribute("clientes", clientes);
+        
         
         //Enviando a requisição para a página cliente.jsp, nesse momento, a página será exibida no navegador do usuário,
         //mostrando o formulario para inserção dos dados de um novo cliente.

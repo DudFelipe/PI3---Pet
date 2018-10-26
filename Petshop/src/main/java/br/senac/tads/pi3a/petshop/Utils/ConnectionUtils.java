@@ -21,14 +21,14 @@ public class ConnectionUtils {
         Connection connection = null;
         //Só tenta abrir uma conexão se não existir ou estiver fechada            
         //Endereço de conexão com o banco de dados
-        String dbURL = "jdbc:mysql://localhost:3306/Petshop";
+        String dbURL = "jdbc:mysql://localhost:3306/pi3_pet";
         
         Class.forName("com.mysql.jdbc.Driver");
         
         //Propriedades para armazenamento de usuário e senha
         Properties properties = new Properties();
         properties.put("user", "root");
-        properties.put("password", "");
+        properties.put("password", "root");
         properties.put("serverTimezone", "UTC");
         //Realiza a conexão com o banco
         connection = DriverManager.getConnection(dbURL, properties);

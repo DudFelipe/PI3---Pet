@@ -12,6 +12,8 @@ import java.util.Date;
  * @author Dud Felipe
  */
 public class Funcionario extends Usuario{
+    private int id;
+    private int idUsuario;
     private int tipoAcesso;
     private int usuario;
     private int senha;
@@ -20,19 +22,41 @@ public class Funcionario extends Usuario{
         super();
     }
     
-    public Funcionario(int tipoAcesso, int usuario, int senha) {
+    public Funcionario(int id, int idUsuario, int tipoAcesso, int usuario, int senha) {
+        this.id = id;
+        this.idUsuario = idUsuario;
         this.tipoAcesso = tipoAcesso;
         this.usuario = usuario;
         this.senha = senha;
     }
 
-    public Funcionario(int tipoAcesso, int usuario, int senha, String nome, String cpf, Date nascimento, String telefone, String email, char sexo) {
+    public Funcionario(int id, int idUsuario, int tipoAcesso, int usuario, int senha, String nome, String cpf, Date nascimento, String telefone, String email, char sexo) {
         super(nome, cpf, nascimento, telefone, email, sexo);
+        this.id = id;
+        this.idUsuario = idUsuario;
         this.tipoAcesso = tipoAcesso;
         this.usuario = usuario;
         this.senha = senha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    
+    
     public int getTipoAcesso() {
         return tipoAcesso;
     }
