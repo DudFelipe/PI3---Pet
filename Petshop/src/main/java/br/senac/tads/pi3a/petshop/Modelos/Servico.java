@@ -12,25 +12,35 @@ import java.math.BigDecimal;
  * @author Dud Felipe
  */
 public class Servico {
-    private String nome;
+    private int id;
+    private String descricao;
     private BigDecimal preco;
-    private int tamAnimal;
+    private int tamanhoAnimal;
 
     public Servico() {
     }
 
-    public Servico(String nome, BigDecimal preco, int tamAnimal) {
-        this.nome = nome;
+    public Servico(int id, String descricao, BigDecimal preco, int tamanhoAnimal) {
+        this.id = id;
+        this.descricao = descricao;
         this.preco = preco;
-        this.tamAnimal = tamAnimal;
+        this.tamanhoAnimal = tamanhoAnimal;
     }
 
-    public String getNome() {
-        return nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public BigDecimal getPreco() {
@@ -41,13 +51,13 @@ public class Servico {
         this.preco = preco;
     }
 
-    public int getTamAnimal() {
-        return tamAnimal;
+    public int getTamanhoAnimal() {
+        return tamanhoAnimal;
     }
 
-    public void setTamAnimal(int tamAnimal) {
-        this.tamAnimal = tamAnimal;
+    public void setTamanhoAnimal(int tamanhoAnimal) {
+        this.tamanhoAnimal = tamanhoAnimal;
     }
-    
+
     
 }
