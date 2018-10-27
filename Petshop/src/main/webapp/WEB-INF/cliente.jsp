@@ -117,7 +117,7 @@
 
                             <div class="form-group col-md-4">
                                 <label for="calendario">Data de Nascimento</label>
-                                <input type="text" class="form-control" id="calendario" name="dtnascimento" value="${cliente.dtNascimento}" >
+                                <input type="text" class="form-control" id="calendario" name="dtnascimento" value="${cliente.dtNascimentoStr}" >
                             </div>
                         </div>
 
@@ -221,7 +221,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#calendario").datepicker();
+                //$("#calendario").datepicker();
+                $( "#calendario" ).datepicker( "option", "dateFormat", "dd/mm/yy");
                 $('#tabelaservicos').DataTable({
                     "language": {
                         "lengthMenu": "Mostrando _MENU_ resultados por página",

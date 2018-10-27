@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3a.petshop.Modelos;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -83,6 +84,11 @@ public class Cliente{
         return dtNascimento;
     }
 
+    public String getDtNascimentoStr(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(this.dtNascimento);
+    }
+    
     public void setDtNascimento(Date dtNascimento) {
         this.dtNascimento = dtNascimento;
     }
