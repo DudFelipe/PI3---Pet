@@ -85,6 +85,9 @@ public class AlterarClienteServlet extends HttpServlet {
             c.setRg(request.getParameter("rg"));
             c.setTelefone(request.getParameter("telefone"));
             c.setEmail(request.getParameter("email"));
+            c.setEndereco(request.getParameter("endereco"));
+            c.setSenha(request.getParameter("senha"));
+            c.setTipoAcesso(Integer.parseInt(request.getParameter("tipoacesso")));
             
             //Depois de armazenar os novos dados do cliente, é chamado o método de validação alterar().
             //Esse método, por sua vez, chama o método responsável por realizar a alteração no banco de dados (caso todos os dados estejam válidos)
