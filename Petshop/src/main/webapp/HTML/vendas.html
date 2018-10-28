@@ -1,152 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>PetShop TADES - Vendas</title>
+        <title>PetShop TADES - Vendas</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
 
-    <div class="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="logo.png">
-                <strong></strong>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <img src="logo.png">
+                    <strong></strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p style="text-align: center; color: white">Nome do Funcionário</p>
+
+                    <li class="active">
+                        <a href="vendas.html" >
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            Vendas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html" >
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="servicos.html">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Serviços
+                        </a>
+
+                    </li>
+
+                    <li >
+                        <a href="clientes.html" >
+                            <i class="glyphicon glyphicon-user"></i>
+                            Clientes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="relatorio.html">
+                            <i class="glyphicon glyphicon-stats"></i>
+                            Relatórios
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            Sair
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div style="width: 600px; height: 263px; position: absolute; background-color: black; 
+                 top: 50%; left: 50%; margin-top: -131px; margin-left: -300px; z-index: 99; display: none;">
+
+
             </div>
 
-            <ul class="list-unstyled components">
-                <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                <li class="active">
-                    <a href="vendas.html" >
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                        Vendas
-                    </a>
-                </li>
-
-                <li>
-                    <a href="produtos.html" >
-                        <i class="glyphicon glyphicon-list-alt"></i>
-                        Produtos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="servicos.html">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Serviços
-                    </a>
-                   
-                </li>
-
-                <li >
-                    <a href="clientes.html" >
-                        <i class="glyphicon glyphicon-user"></i>
-                        Clientes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="relatorio.html">
-                        <i class="glyphicon glyphicon-stats"></i>
-                        Relatórios
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-log-out"></i>
-                        Sair
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div style="width: 600px; height: 263px; position: absolute; background-color: black; 
-        top: 50%; left: 50%; margin-top: -131px; margin-left: -300px; z-index: 99; display: none;">
-
-
-        </div>
-
-        <div id="content">
-
-            <div class="row">
-                <div class="col-md-8">
+            <div id="content">
+                <div class="row">
+                    <div class="col-md-8">
                         <nav class="navbar navbar-default">
                             <div style="font-size: 20px; text-align: center;">Nome do Cliente</div>
                         </nav> 
-                        <nav class="navbar navbar-default" style="height: 58px !important">
-                                <div style="font-size: 10px; text-align: center;">
-                                    <input type="text" name="" id="" placeholder="Buscar">
-                            </nav> 
-
-
-                </div>
-
-                <div class="col-md-4">
-                        <nav class="navbar navbar-default" style="height: 58px !important">
-                            <div style="font-size: 10px; text-align: center;">
-                                <input type="text" name="" id="" placeholder="Buscar">
-                        </nav>
-                    <div class="navbar">
-                        <table class="table" id="tabelainventario">
+                        <nav class="navbar navbar-default">
+                            <div style="font-size: 10px; text-align: center;"></div>
+                            <input type="text" name="" id="pesquisaprodutos&servicos" style="height: 28px; width:90%;"
+                                   placeholder="Pesquisar Produtos/Serviços">
+                        </nav> 
+                        <div class="navbar">
+                            <table class="table" id="tabelaitens">
                                 <thead>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                  <td scope="row">203</th>
-                                  <td>Bolsa</td>
-                                  <td>10</td>
-                                  <td>R$14,00</td>
-                                  <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                              </tr>   
-                          </tbody>
-                          </table>
+                                    <tr>
+                                        <th>Cod.</th>
+                                        <th>Nome</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor</th>
+                                        <th>Adicionar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">203</td>
+                                        <td>Bolsa</td>
+                                        <td>10</td>
+                                        <td>R$14,00</td>
+                                        <td><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
+                                    </tr>   
+                                </tbody>
+                            </table>  
                         </div>
-                        <div class="navbar">
-                        Valor total <h4>R$ 20,00</h4>
-                        </div>
+                    </div>
 
-                        <div class="navbar">
-                          <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%"> 
-                              Finalizar venda</button>
-                              <br><br>
-                              <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%"> 
-                                    Cancelar</button>
-                        </div>
+                    <div class="col-md-4">
+                        <nav class="navbar navbar-default">
+                            <div style="font-size: 10px; text-align: center;">
+                                <input type="text" name="" id="" style="height:28px !important; width: 90%;" 
+                                       placeholder="Pesquisar Cliente">
+
+                                </nav>
+                                <div class="navbar">
+                                    <table class="table" id="tabelacarrinho">
+                                        <thead>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td scope="row">203</th>
+                                                <td>Bolsa</td>
+                                                <td>10</td>
+                                                <td>R$14,00</td>
+                                                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                                            </tr>   
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="navbar">
+                                    Valor total <h4>R$ 20,00</h4>
+                                </div>
+
+                                <div class="navbar">
+                                    <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%"> 
+                                        Finalizar venda</button>
+                                    <br><br>
+                                    <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%"> 
+                                        Cancelar</button>
+                                </div>
+
+                            </div>
+                    </div>
+
+
 
                 </div>
             </div>
+
+            <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                $('#tabelaitens').DataTable( {
+                        "searching":false,
                         
-
-
-        </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-
-
-<script type="text/javascript">
-    $(document).ready( function () {
-        $( "#calendario" ).datepicker();
-
-        $('#tabelaservicos').DataTable( {
             "language": {
                 "lengthMenu": "Mostrando _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado - desculpe.",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
                 "infoEmpty": "Não há dados para mostrar",
                 "infoFiltered": "(filtrado no total de _MAX_ resultados)",
                 "search": "Procurar: ",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
                 "paginate": {
                 "first":      "Primeiro",
                 "last":       "Último",
@@ -156,16 +175,6 @@
             }
         } );
     } );
-
-    $("#liberacadastro").on("click", function() {
-        $("#vendas").show();
-        $("#pesquisa").hide();
-    });
-
-    $("#liberapesquisa").on("click", function() {
-        $("#vendas").hide();
-        $("#pesquisa").show();
-    });
-</script>
-</body>
+            </script>
+    </body>
 </html>
