@@ -10,7 +10,7 @@
 }
 
 .image {
-	background-image: url("../Imagens/nose.jpg");
+	background-image: url("../assets/images/nose.jpg");
 	background-color: #000000;
 	height: 1000px;
 	background-position: 150px;
@@ -35,7 +35,7 @@
 
 @font-face {
 	font-family: patas;
-	src: url('../HTML/Fonts/eurof55.ttf');
+	src: url('../assets/Fonts/eurof55.ttf');
  }
 
 .patas{
@@ -45,7 +45,7 @@
 
 input{
 	box-shadow: 0 0 6px #000000;
-	margin: 10px;
+	margin: 8px;
 }
 
 .layer{
@@ -83,3 +83,10 @@ button{
 	box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
 }
 
+
+.link{
+	position: relative;
+	margin: 8px;
+	left: 220px;
+	color: #000000;
+}

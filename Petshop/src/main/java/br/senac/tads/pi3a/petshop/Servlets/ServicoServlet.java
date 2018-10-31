@@ -65,7 +65,17 @@ public class ServicoServlet extends HttpServlet {
         catch(Exception ex){
             ex.printStackTrace();
         }
+        
+        List<Servico> servicos = null;
+        try{
+            servicos = ServicoBLL.listar();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }
 
+        request.setAttribute("servicos", servicos);
+        
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/servicos.jsp");
         dispatcher.forward(request, response);
     }
