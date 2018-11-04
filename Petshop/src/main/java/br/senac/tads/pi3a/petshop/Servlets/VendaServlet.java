@@ -26,7 +26,10 @@ public class VendaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        Venda v = new Venda();
+       
        List<Venda> venda= null;
+       
+     
        
        
        
