@@ -10,7 +10,7 @@
 }
 
 .image {
-	background-image: url("../Imagens/nose.jpg");
+	background-image: url("../assets/images/nose.jpg");
 	background-color: #000000;
 	height: 1000px;
 	background-position: 150px;
@@ -35,7 +35,7 @@
 
 @font-face {
 	font-family: patas;
-	src: url('../HTML/Fonts/eurof55.ttf');
+	src: url('../assets/Fonts/eurof55.ttf');
  }
 
 .patas{

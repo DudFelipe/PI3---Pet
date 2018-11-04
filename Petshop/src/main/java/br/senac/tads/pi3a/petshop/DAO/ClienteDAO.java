@@ -28,8 +28,8 @@ public class ClienteDAO {
     //Responsável por inserir um novo cliente no banco de dados
     public static void inserir(Cliente c) throws SQLException, Exception{
         //Comando de inserção no banco de dados, com alguns parâmetros a serem preparados
-        String sql = "INSERT INTO Clientes (Nome, DtNascimento, CPF, RG, Telefone, Email, Sexo) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (cpf, nome, nascimento, telefone, email, sexo, rg, endereco, senha, tipoacesso) " +
+                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -39,16 +39,19 @@ public class ClienteDAO {
             pst = conn.prepareStatement(sql); //Cria o PreparedStatement para que seja possível definir os parâmetros do INSERT
             
             //Preparando todos os parâmetros do método INSERT na ordem em que foram definidos na query
-            pst.setString(1, c.getNome());
+            pst.setString(1, c.getCpf());
+            pst.setString(2, c.getNome());
             
             Timestamp t = new Timestamp(c.getDtNascimento().getTime());
-            pst.setTimestamp(2, t);
+            pst.setTimestamp(3, t);
             
-            pst.setString(3, c.getCpf());
-            pst.setString(4, c.getRg());
-            pst.setString(5, c.getTelefone());
-            pst.setString(6, c.getEmail());
-            pst.setString(7, c.getSexo() + "");
+            pst.setString(4, c.getTelefone());
+            pst.setString(5, c.getEmail());
+            pst.setString(6, c.getSexo() + "");
+            pst.setString(7, c.getRg());
+            pst.setString(8, c.getEndereco());
+            pst.setString(9, c.getSenha());
+            pst.setInt(10, c.getTipoAcesso());
             
             pst.execute(); //Executando a query e realizando a inserção no banco de dados.
         }
@@ -65,9 +68,12 @@ public class ClienteDAO {
     //Responsável por realizar a alteração dos dados de um determinado cliente
     public static void alterar(Cliente c) throws SQLException, ClassNotFoundException{
         //Comando de UPDATE no banco de dados com alguns parâmetros que irão receber os novos valores.
-        String sql = "UPDATE Clientes SET Nome = ?, DtNascimento = ?, CPF = ?, RG = ?, Telefone = ?, Email = ?, Sexo = ? "
-                + "WHERE id = ?";
+        /*String sql = "UPDATE Usuario SET Nome = ?, nascimento = ?, CPF = ?, RG = ?, Telefone = ?, Email = ?, Sexo = ? "
+                + "WHERE id = ?";*/
         
+        String sql = "UPDATE usuario SET cpf = ?, nome = ?, nascimento = ?, telefone = ?, email = ?, "
+                + "sexo = ?, rg = ?, endereco = ?, senha = ?, tipoacesso = ? WHERE idUsuario = ?"; 
+
         Connection conn = null;
         PreparedStatement pst = null;
         
@@ -76,18 +82,20 @@ public class ClienteDAO {
             pst = conn.prepareStatement(sql); //Cria o PreparedStatement para que seja possível definir os parâmetros do UPDATE
             
             //Preparando todos os parâmetros do comando UPDATE definido anteriormente
-            pst.setString(1, c.getNome());
+            //Preparando todos os parâmetros do método INSERT na ordem em que foram definidos na query
+            pst.setString(1, c.getCpf());
+            pst.setString(2, c.getNome());
             
             Timestamp t = new Timestamp(c.getDtNascimento().getTime());
-            pst.setTimestamp(2, t);
+            pst.setTimestamp(3, t);
             
-            pst.setString(3, c.getCpf());
-            pst.setString(4, c.getRg());
-            pst.setString(5, c.getTelefone());
-            pst.setString(6, c.getEmail());
-            pst.setString(7, c.getSexo() + "");
-            
-            pst.setInt(8, c.getId());
+            pst.setString(4, c.getTelefone());
+            pst.setString(5, c.getEmail());
+            pst.setString(6, c.getSexo() + "");
+            pst.setString(7, c.getRg());
+            pst.setString(8, c.getEndereco());
+            pst.setInt(9, c.getTipoAcesso());
+            pst.setInt(10, c.getId());
             
             pst.execute(); //Executando a instrução SQL e realizando a alteração dos dados
         }
@@ -104,7 +112,7 @@ public class ClienteDAO {
     //Responsável por realizar a exclusão de um deterinado cliente
     public static void excluir(int id) throws SQLException, ClassNotFoundException{
         //Comando DELETE do banco de dados para realizar a exclusão de um determinado cliente utilizando o ID do mesmo
-        String sql = "DELETE FROM Clientes WHERE id = ?"; 
+        String sql = "DELETE FROM usuario WHERE idUsuario = ?"; 
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -131,7 +139,7 @@ public class ClienteDAO {
     //Responsável por resgatar todos os clientes cadastrados e retornar uma lista com os mesmos
     public static List<Cliente> listar() throws SQLException, ClassNotFoundException{
         //Comando SELECT para retornar todos os dados de todos os clientes
-        String sql = "SELECT * FROM Clientes";
+        String sql = "SELECT * FROM usuario WHERE tipoAcesso = 1";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -149,14 +157,17 @@ public class ClienteDAO {
                 
                 //Armazenando os dados do cliente contidos no ResultSet.
                 //Para isso, estamos utilizando os métodos set..() da classe Cliente e os métodos get... do ResultSet passando o nome do campo no banco de dados
-                c.setId(rs.getInt("id"));
+                c.setId(rs.getInt("idUsuario"));
                 c.setNome(rs.getString("Nome"));
-                c.setDtNascimento(rs.getDate("DtNascimento"));
+                c.setDtNascimento(rs.getDate("nascimento"));
                 c.setCpf(rs.getString("CPF"));
                 c.setRg(rs.getString("RG"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEmail(rs.getString("email"));
                 c.setSexo(rs.getString("sexo").charAt(0));
+                c.setEndereco(rs.getString("endereco"));
+                c.setSenha(rs.getString("senha"));
+                c.setTipoAcesso(rs.getInt("tipoacesso"));
                 
                 listaCliente.add(c); //Com todos os dados do cliente armazenado, adiciona o cliente na lista.
             }
@@ -179,7 +190,7 @@ public class ClienteDAO {
     //Responsável por retornar os dados de um cliente específico
     public static Cliente obterCliente(int id) throws SQLException{
         //Comando SELECT responsável por selecionar os dados de um determinado cliente filtrado pelo seu ID
-        String sql = "SELECT * FROM Clientes WHERE id = ?";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -196,14 +207,17 @@ public class ClienteDAO {
                 Cliente c = new Cliente(); //Cria um novo cliente
                 
                 //Armazena seus dados, da mesma forma que foi feito no método listar()
-                c.setId(rs.getInt("id"));
+                c.setId(rs.getInt("idUsuario"));
                 c.setNome(rs.getString("Nome"));
-                c.setDtNascimento(rs.getDate("DtNascimento"));
+                c.setDtNascimento(rs.getDate("nascimento"));
                 c.setCpf(rs.getString("CPF"));
                 c.setRg(rs.getString("RG"));
                 c.setTelefone(rs.getString("telefone"));
                 c.setEmail(rs.getString("email"));
                 c.setSexo(rs.getString("sexo").charAt(0));
+                c.setEndereco(rs.getString("endereco"));
+                c.setSenha(rs.getString("senha"));
+                c.setTipoAcesso(rs.getInt("tipoacesso"));
                 
                 return c; //Retorna esse cliente depois de armazenar seus dados
             }
