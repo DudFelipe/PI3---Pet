@@ -5,6 +5,9 @@
  */
 package br.senac.tads.pi3a.petshop.Servlets;
 
+import br.senac.tads.pi3a.petshop.Modelos.Cliente;
+import br.senac.tads.pi3a.petshop.Modelos.Produto;
+import br.senac.tads.pi3a.petshop.Modelos.Servico;
 import br.senac.tads.pi3a.petshop.Modelos.Venda;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,12 +25,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendaServlet", urlPatterns = {"/VendaServlet"})
 public class VendaServlet extends HttpServlet {
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        Venda v = new Venda();
-       
        List<Venda> venda= null;
+       List<Cliente> cliente = null;
+       List<Produto> produto = null;
+       List<Servico> servico = null;
+       
+       
        
      
        
