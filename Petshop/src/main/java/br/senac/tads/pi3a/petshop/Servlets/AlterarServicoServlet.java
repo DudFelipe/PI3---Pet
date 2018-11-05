@@ -10,6 +10,9 @@ import br.senac.tads.pi3a.petshop.Modelos.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +43,16 @@ public class AlterarServicoServlet extends HttpServlet {
             ex.printStackTrace();
         }
         
+        List<Servico> servicos = null;
+        try{
+            servicos = ServicoBLL.listar();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }
+
+        request.setAttribute("servicos", servicos);
+        
         request.setAttribute("servico", s);
         request.setAttribute("manutencao", manutencao);
         
@@ -62,6 +75,16 @@ public class AlterarServicoServlet extends HttpServlet {
             s.setTamanhoAnimal(Integer.parseInt(request.getParameter("tamanho")));
             
             ServicoBLL.alterar(s);
+            
+            List<Servico> servicos = null;
+            try{
+                servicos = ServicoBLL.listar();
+            }
+            catch(ClassNotFoundException | SQLException ex){
+                ex.printStackTrace();
+            }
+
+        request.setAttribute("servicos", servicos);
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/servicos.jsp");
             dispatcher.forward(request, response);

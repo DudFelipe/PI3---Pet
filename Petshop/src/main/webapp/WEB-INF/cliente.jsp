@@ -86,7 +86,7 @@
 
             <div id="content">
                 <nav class="navbar navbar-default">
-                    <div style="font-size: 20px; text-align: center;">Gerenciar Clientes</div>
+                    <div style="font-size: 20px; text-align: center;">Gerenciar Usuários</div>
                 </nav>
 
 
@@ -117,8 +117,8 @@
 
                             <div class="form-group col-md-4">
                                 <label for="calendario">Data de Nascimento</label>
-                                <input type="text" class="form-control" id="calendario" name="dtnascimento" value="${cliente.dtNascimento}" >
-                            </div>
+                                <input type="text" class="form-control" id="calendario" name="dtnascimento" value="${cliente.dtNascimentoStr}" >
+                            </div> 
                         </div>
 
                         <div class="form-row">
@@ -130,9 +130,11 @@
                             <div class="form-group col-md-6">
                                 <label for="inputState">Sexo</label>
                                 <select id="inputState" class="form-control" name="sexo" value="${cliente.sexo}">
-                                    <option selected>Selecione...</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Feminino</option>
+                                    <option>Selecione...</option>
+                                    <option value="M"
+                                            <c:if test="${cliente.sexo == 'M'.charAt(0)}">selected</c:if>
+                                            >Masculino</option>
+                                    <option value="F" <c:if test="${cliente.sexo == 'F'.charAt(0)}">selected</c:if>>Feminino</option>
                                 </select>
                             </div>
                         </div>
@@ -144,7 +146,13 @@
                                 <input type="text" class="form-control" id="rg" name="rg" value="${cliente.rg}">
                             </div>
 
-                            <div class="form-group col-md-6" style="min-height: 59px;">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Tipo Acesso</label>
+                                <select id="inputState" class="form-control" name="tipoacesso" value="${cliente.tipoAcesso}">
+                                    <option selected>Selecione...</option>
+                                    <option value="1" <c:if test="${cliente.tipoAcesso == 1}">selected</c:if>>Cliente</option>
+                                    <option value="2" <c:if test="${cliente.tipoAcesso == 2}">selected</c:if>>Funcionario</option>
+                                </select>
                             </div>
 
                         </div>
@@ -156,8 +164,22 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="servico">Email</label>
-                                <input type="text" class="form-control" id="servico" name="email" value="${cliente.email}">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" class="form-control" id="endereco" name="endereco" value="${cliente.endereco}">
+                            </div>
+
+                            
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" value="${cliente.email}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="senha">Senha</label>
+                                <input type="password" class="form-control" id="senha" name="senha">
                             </div>
 
                         </div>
@@ -166,7 +188,7 @@
                             <div class="form-group col-md-4">
                             </div>
                             <div class="form-group col-md-4 text-center">
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
                             </div>
                             <div class="form-group col-md-4">
                             </div>
@@ -181,11 +203,14 @@
                     <table class="table" id="tabelaservicos">
                         <thead>
                             <tr>
+                                <th scope="col">Id</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">CPF</th>
                                 <th scope="col">RG</th>
+                                <th scope="col">Data Nascimento</th>
                                 <th scope="col">Telefone</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Endereço</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
@@ -195,9 +220,13 @@
                                 <tr>
                                     <td scope="row"><c:out value="${c.id}" /></td>
                                     <td><c:out value="${c.nome}" /></td>
-                                    <td><c:out value="${c.dtNascimento}" /></td>
                                     <td><c:out value="${c.cpf}" /></td>
                                     <td><c:out value="${c.rg}" /></td>
+                                    <td><c:out value="${c.dtNascimento}" /></td>
+                                    <td><c:out value="${c.telefone}" /></td>
+                                    <td><c:out value="${c.email}" /></td>
+                                    <td><c:out value="${c.endereco}" /></td>
+
                                     <td><a href="${pageContext.request.contextPath}/AlterarClienteServlet?id=${c.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                                     <td><a href="${pageContext.request.contextPath}/ExcluirClienteServlet?id=${c.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
                                 </tr>
@@ -221,14 +250,15 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#calendario").datepicker();
+                //$("#calendario").datepicker();
+                $( "#calendario" ).datepicker( "option", "dateFormat", "dd/mm/yy");
                 $('#tabelaservicos').DataTable({
                     "language": {
-                        "lengthMenu": "Mostrando _MENU_ resultados por página",
+                        "lengthMenu": "Mostrando MENU resultados por página",
                         "zeroRecords": "Nada encontrado - desculpe.",
-                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "info": "Mostrando página PAGE de PAGES",
                         "infoEmpty": "Não há dados para mostrar",
-                        "infoFiltered": "(filtrado no total de _MAX_ resultados)",
+                        "infoFiltered": "(filtrado no total de MAX resultados)",
                         "search": "Procurar: ",
                         "paginate": {
                             "first": "Primeiro",
