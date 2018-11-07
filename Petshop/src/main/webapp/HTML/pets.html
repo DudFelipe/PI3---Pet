@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
 
@@ -36,14 +37,14 @@
                         </a>
                     </li>
     
-                    <li class>
+                    <li>
                         <a href="servicos.html">
                             <i class="glyphicon glyphicon-home"></i>
                             Serviços
                         </a>
                        
                     </li>
-                    <li class="active">
+                    <li  class="active">
                         <a href="pets.html">
                             <i class="fas fa-paw">
                             </i>
@@ -54,7 +55,7 @@
                     <li >
                         <a href="clientes.html" >
                             <i class="glyphicon glyphicon-user"></i>
-                             Usuário
+                            Usuário
                         </a>
                     </li>
     
@@ -76,10 +77,8 @@
 
         <div id="content">
             <nav class="navbar navbar-default">
-                    <div style="font-size: 20px; text-align: center;">Gerenciar Serviços</div>
+                    <div style="font-size: 20px; text-align: center;">Gerenciar Pets</div>
                 </nav>
-
-
 
                 <div style="margin-bottom: 15px;">
                     <button type="button" class="btn btn-secondary btn-lg" id="liberacadastro">Cadastro</button>
@@ -87,102 +86,88 @@
                 </div>
 
             <div id="cadastro">
-
-               
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="servico">Nome do pet</label>
-                            <input type="text" class="form-control" id="nomePet" >
+                            <label for="produtos">Nome</label>
+                            <input type="text" class="form-control" id="nomepet" >
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="preco">Raça</label>
-                            <input type="text" class="form-control" id="raça">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="servico">Tipo</label>
-                            <input type="text" class="form-control" id="tipo" >
-                        </div>
-
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="calendario">Data de Nascimento</label>
                             <input type="text" class="form-control" id="calendario" >
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label>Porte</label><br>
+                        <div class="form-group col-md-6">
+                            <label for="produtos">Especie</label>
+                            <input type="text" class="form-control" id="especie" >
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Tamanho do Animal</label><br>
                             Pequeno: <input type="radio" class="form-check-input" name="tamanhoanimal" value="1" > | 
                             Médio: <input type="radio" class="form-check-input" name="tamanhoanimal" value="2" > |
                             Grande: <input type="radio" class="form-check-input" name="tamanhoanimal" value="3" >
                         </div>
+                        
+                    </div>
+                    <div class="form-row">
+                            <div class="form-group col-md-4">
+                                    <label for="pets">Tipo:</label>
+                                    <input type="text" class="form-control" id="tipo">
+                                </div>  
+
+                        <div class="form-group col-md-4">
+                                <label for="produtos">Nome do dono:</label>
+                                <input type="text" class="form-control" id="nomedono" >
+                        </div>
+                        <div class="form-group col-md-2">
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">Pesquisa</button>
+                        </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
+                            </div>
+                            <div class="form-group col-md-4 text-center">
+                                <button type="button" class="btn btn-secondary btn-lg btn-block">Cadastrar</button>
+                            </div>
+                            <div class="form-group col-md-4">
+                            </div>
                         </div>
-                        <div class="form-group col-md-4 text-center">
-                            <button type="button" class="btn btn-defatult btn-lg btn-block">Cadastrar</button>
-                        </div>
-                        <div class="form-group col-md-4">
-                        </div>
-                    </div>
+                        </form>
 
-
-
-
-                </form>
-
-
-            </div>
+                    </div> 
 
             <div id="pesquisa" style="display: none">
-
-                <table class="table" id="tabelaservicos">
+                <form>
+                <table class="table" id="tabelaprodutos">
                   <thead>
                     <tr>
-                      <th scope="col">Id</th>
+                      <th scope="col"> Cod.Pet</th>
                       <th scope="col">Nome</th>
+                      <th scope="col">Especie</th>
+                      <th scope="col">Tamanho</th>
+                      <th scope="col">Nome do Dono</th>
                       <th scope="col">Data de nasimento</th>
-                      <th scope="col">Raça</th>
-                      <th scope="col">Porte</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Excluir</th>
                   </tr>
               </thead>
               <tbody>
                 <tr>
-                    <td scope="row">401</th>
-                        <td>Mario</td>
-                        <td>03/10/2018</td>
-                        <td>Rottweiler</td>
-                        <td>Grande</td>
+                    <td scope="row">101</td>
+                    <td scope="row">Salem</td>
+                    <td>Royal Canin</td>
+                    <td>Adultos</td>
+                    <td>150,00</td>
+                    <td>20</td>
                     <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
                     <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                 </tr>
-                <tr>
-                    <td scope="row">402</th>
-                    <td>Adilson</td>
-                    <td>01/05/2018</td>
-                    <td>Lulu da pomerania</td>
-                    <td>Pequeno</td>
-                    <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                </tr>
-                <tr>
-                    <td scope="row">404</th>
-                    <td>José</td>
-                    <td>01/02/2003</td>
-                    <td>Spitz alemão</td>
-                    <td>Pequeno</td>
-                    <td><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
-                </tr>
+               
           </tbody>
       </table>
 
@@ -190,6 +175,7 @@
   </div>
         </div>
 </div>
+
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -199,9 +185,8 @@
 
 <script type="text/javascript">
     $(document).ready( function () {
-        $( "#calendario" ).datepicker();
 
-        $('#tabelaservicos').DataTable( {
+        $('#tabelaprodutos').DataTable( {
             "language": {
                 "lengthMenu": "Mostrando _MENU_ resultados por página",
                 "zeroRecords": "Nada encontrado - desculpe.",

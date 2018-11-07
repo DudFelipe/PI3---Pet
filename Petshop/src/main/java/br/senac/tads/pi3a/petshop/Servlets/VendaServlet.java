@@ -43,6 +43,8 @@ public class VendaServlet extends HttpServlet {
         }
         
         request.setAttribute("servicos", servicos);
+        
+        
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
