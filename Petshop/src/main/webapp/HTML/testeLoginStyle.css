@@ -4,7 +4,7 @@
 
 
 .box-bg{
-	background-color: #cccccc;
+	background-color: #ccccccdc;
 	border: 1px solid black;
 	opacity: 0.9;
 }
@@ -63,24 +63,14 @@ button{
 	margin: 10px;
 }
 
-.parent{
-	position: relative;
-	top: 0;
-	left: 0;
-}
 
-.image1{
-	z-index: 1;
+.logo{
 	position: relative;
-	top: 100px;
-	left: 200px;
+	top: -20px;
+	left: 90px;
 	size: 300px;
 
-	border: 0px solid #fff;
-
-	-webkit-box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
-	-moz-box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
-	box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
+	
 }
 
 
@@ -90,3 +80,18 @@ button{
 	left: 220px;
 	color: #000000;
 }
+
+.text{
+	text-align: center;
+}
+
+a:hover {
+	text-decoration: none; 
+	color: #fff;
+	font-style: none;
+  }
+
+  a{
+	color: #fff;
+  }
+
