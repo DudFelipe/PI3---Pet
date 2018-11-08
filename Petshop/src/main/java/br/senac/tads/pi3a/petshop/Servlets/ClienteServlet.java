@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dud Felipe
  */
-@WebServlet(name = "ClienteServlet", urlPatterns = {"/ClienteServlet"})
+@WebServlet(name = "ClienteServlet", urlPatterns = {"ClienteServlet"})
 public class ClienteServlet extends HttpServlet {
 
     @Override
@@ -64,6 +64,8 @@ public class ClienteServlet extends HttpServlet {
         //o processamento dos dados será enviado para esse método
         
         Cliente c = new Cliente(); //Sendo assim, criaremos um novo cliente para ser cadastrado
+        List<Cliente> clientes = null;
+        
         
         //Utilizando o método request.getParameter(), é possível resgatar o valor que foi digitado nos campos do
         //formulário lá na página cliente.jsp.
@@ -87,13 +89,19 @@ public class ClienteServlet extends HttpServlet {
         c.setTelefone(request.getParameter("telefone"));
         c.setEmail(request.getParameter("email"));
         c.setSexo(request.getParameter("sexo").charAt(0));
+        c.setEndereco(request.getParameter("endereco"));
+        c.setSenha(request.getParameter("senha"));
+        c.setTipoAcesso(Integer.parseInt(request.getParameter("tipoacesso")));
         
         try{
             ClienteBLL.inserir(c); //Com todos os dados armazenados, o cliente é enviado para a classe de validação, no método inserir().
+            clientes = ClienteBLL.listar();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
+        
+        request.setAttribute("clientes", clientes);
         
         //Depois de todo o processamento, caso não ocorra nenhum erro, a requisição é enviada novamente para a página cliente.jsp
         //para que o usuário possa realizar outra inserção se desejar.
