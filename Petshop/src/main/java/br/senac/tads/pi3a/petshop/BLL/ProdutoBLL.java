@@ -8,6 +8,8 @@ package br.senac.tads.pi3a.petshop.BLL;
 import br.senac.tads.pi3a.petshop.DAO.ProdutoDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Produto;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -23,15 +25,15 @@ public class ProdutoBLL {
             throw new Exception("O preço deve ser preenchido e maior que zero!");
         }
         
-        if(p.getFabricante().trim().lenght() == 0) {
+        if(p.getFabricante().trim().length() == 0) {
         	throw new Exception("O fabricante deve ser preenchido!");
         }
         
-        if(p.getQuantidade() == null || p.getQuantidade() < 0){
+        if(p.getQuantidade() < 0){
             throw new Exception("A quantidade deve ser preenchida e maior que zero!");
         }
         
-        if(p.getModelo().trim().lenght() == 0) {
+        if(p.getModelo().trim().length() == 0) {
         	throw new Exception("O modelo deve ser preenchido!");
         }
 
@@ -48,15 +50,15 @@ public class ProdutoBLL {
             throw new Exception("O preço deve ser preenchido e maior que zero!");
         }
         
-        if(p.getFabricante().trim().lenght() == 0) {
+        if(p.getFabricante().trim().length() == 0) {
         	throw new Exception("O fabricante deve ser preenchido!");
         }
         
-        if(p.getQuantidade() == null || p.getQuantidade() < 0){
+        if( p.getQuantidade() < 0){
             throw new Exception("A quantidade deve ser preenchida e maior que zero!");
         }
         
-        if(p.getModelo().trim().lenght() == 0) {
+        if(p.getModelo().trim().length() == 0) {
         	throw new Exception("O modelo deve ser preenchido!");
         }
 
@@ -67,7 +69,7 @@ public class ProdutoBLL {
         ProdutoDAO.excluir(id);
     }
     
-    public static void listar(String filtro)throws SQLException, ClassNotFoundException{
-        return ProdutoDAO.listar();
+    public static List<Produto> listar(String filtro)throws SQLException, ClassNotFoundException{
+        return ProdutoDAO.listar(filtro);
     }
 }
