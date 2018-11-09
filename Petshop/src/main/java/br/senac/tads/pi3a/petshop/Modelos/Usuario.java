@@ -142,6 +142,7 @@ public abstract class Usuario {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
+
     
     
 }
