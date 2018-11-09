@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3a.petshop.Modelos;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,40 +14,76 @@ import java.util.Date;
  */
 public class Pet {
     
+    private int id;
+    private Cliente idCliente;
     private String nome;
-    private String tipo;
-    private int porte;
+    private String especie;
+    private String porte;
     private Date nascimento;
-    
-    public String getNome(){
-        return this.nome;
-    }
-    
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    
-    public String getTipo(){
-        return this.tipo;
-    }
-    
-    public void setTipo(String tipo){
-        this.tipo = tipo;
+
+    public Pet() {
+        
     }
 
-    public int getPorte(){
-        return this.porte;
+    public Pet(int id, Cliente idCliente, String nome, String especie, String porte, Date nascimento) {
+        this.id = id;
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.especie = especie;
+        this.porte = porte;
+        this.nascimento = nascimento;
     }
-    
-    public void setPorte(int porte){
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Cliente getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public String getPorte() {
+        return porte;
+    }
+
+    public void setPorte(String porte) {
         this.porte = porte;
     }
-    
-    public Date getNascimento(){
-        return this.nascimento;
+
+    public Date getNascimento() {
+        return nascimento;
     }
     
-    public void setNascimento(Date data){
-        this.nascimento = data;
+    public String getNascimentoStr(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(this.nascimento);
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
     }
 }

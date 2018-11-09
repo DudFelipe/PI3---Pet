@@ -4,13 +4,13 @@
 
 
 .box-bg{
-	background-color: #cccccc;
+	background-color: #ccccccdc;
 	border: 1px solid black;
 	opacity: 0.9;
 }
 
 .image {
-	background-image: url("../Imagens/nose.jpg");
+	background-image: url("../assets/images/nose.jpg");
 	background-color: #000000;
 	height: 1000px;
 	background-position: 150px;
@@ -35,7 +35,7 @@
 
 @font-face {
 	font-family: patas;
-	src: url('../HTML/Fonts/eurof55.ttf');
+	src: url('../assets/Fonts/eurof55.ttf');
  }
 
 .patas{
@@ -45,7 +45,7 @@
 
 input{
 	box-shadow: 0 0 6px #000000;
-	margin: 10px;
+	margin: 8px;
 }
 
 .layer{
@@ -63,23 +63,35 @@ button{
 	margin: 10px;
 }
 
-.parent{
-	position: relative;
-	top: 0;
-	left: 0;
-}
 
-.image1{
-	z-index: 1;
+.logo{
 	position: relative;
-	top: 100px;
-	left: 200px;
+	top: -20px;
+	left: 90px;
 	size: 300px;
 
-	border: 0px solid #fff;
-
-	-webkit-box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
-	-moz-box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
-	box-shadow: 2px 4px 18px -2px rgba(0,0,0,0.75);
+	
 }
+
+
+.link{
+	position: relative;
+	margin: 8px;
+	left: 220px;
+	color: #000000;
+}
+
+.text{
+	text-align: center;
+}
+
+a:hover {
+	text-decoration: none; 
+	color: #fff;
+	font-style: none;
+  }
+
+  a{
+	color: #fff;
+  }
 
