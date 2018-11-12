@@ -234,4 +234,53 @@ public class ClienteDAO {
         }
         return null;
     }
+    
+    //Método buscarPorEmail
+    //Responsável por retornar os dados de um cliente específico pelo email
+    public static Cliente buscarPorEmail(String email) throws SQLException{
+        //Comando SELECT responsável por selecionar os dados de um determinado cliente filtrado pelo seu ID
+        String sql = "SELECT * FROM usuario WHERE email = ?";
+        
+        Connection conn = null;
+        PreparedStatement pst = null;
+        
+        try{
+            conn = ConnectionUtils.getConnection();
+            pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, email);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){ //Caso exista algum registro no ResultSet
+                Cliente c = new Cliente(); //Cria um novo cliente
+                
+                //Armazena seus dados, da mesma forma que foi feito no método listar()
+                c.setId(rs.getInt("idUsuario"));
+                c.setNome(rs.getString("Nome"));
+                c.setDtNascimento(rs.getDate("nascimento"));
+                c.setCpf(rs.getString("CPF"));
+                c.setRg(rs.getString("RG"));
+                c.setTelefone(rs.getString("telefone"));
+                c.setEmail(rs.getString("email"));
+                c.setSexo(rs.getString("sexo").charAt(0));
+                c.setEndereco(rs.getString("endereco"));
+                c.setSenha(rs.getString("senha"));
+                c.setTipoAcesso(rs.getInt("tipoacesso"));
+                
+                return c; //Retorna esse cliente depois de armazenar seus dados
+            }
+        }
+        catch(Exception ex){
+            return null;
+        }
+        finally{
+            if(pst != null && !pst.isClosed())
+                pst.close();
+            
+            if(conn != null && !conn.isClosed())
+                conn.close();
+        }
+        return null;
+    }
 }
