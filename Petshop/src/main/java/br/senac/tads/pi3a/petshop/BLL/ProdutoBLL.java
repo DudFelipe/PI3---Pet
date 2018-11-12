@@ -8,6 +8,8 @@ package br.senac.tads.pi3a.petshop.BLL;
 import br.senac.tads.pi3a.petshop.DAO.ProdutoDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Produto;
 import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -23,23 +25,51 @@ public class ProdutoBLL {
             throw new Exception("O preço deve ser preenchido e maior que zero!");
         }
         
+        if(p.getFabricante().trim().length() == 0) {
+        	throw new Exception("O fabricante deve ser preenchido!");
+        }
         
+        if(p.getQuantidade() < 0){
+            throw new Exception("A quantidade deve ser preenchida e maior que zero!");
+        }
+        
+        if(p.getModelo().trim().length() == 0) {
+        	throw new Exception("O modelo deve ser preenchido!");
+        }
 
-        //Caso todos os dados estejam corretos, o cliente é enviado para o método inserir da classe ClienteDAO.
-        //Essa classe é responsável por realizar operações no banco de dados.
         ProdutoDAO.inserir(p);
     }
     
     
-    public static void alterar(Produto p){
+    public static void alterar(Produto p) throws Exception{
+        if(p.getNome().trim().length() == 0){
+            throw new Exception("O nome deve ser preenchido!");
+        }
         
+        if(p.getPreco() == null || p.getPreco().compareTo(BigDecimal.ZERO) < 0){
+            throw new Exception("O preço deve ser preenchido e maior que zero!");
+        }
+        
+        if(p.getFabricante().trim().length() == 0) {
+        	throw new Exception("O fabricante deve ser preenchido!");
+        }
+        
+        if( p.getQuantidade() < 0){
+            throw new Exception("A quantidade deve ser preenchida e maior que zero!");
+        }
+        
+        if(p.getModelo().trim().length() == 0) {
+        	throw new Exception("O modelo deve ser preenchido!");
+        }
+
+        ProdutoDAO.alterar(p);        
     }
     
-    public static void excluir(int id){
-        
+    public static void excluir(int id)throws SQLException, ClassNotFoundException{
+        ProdutoDAO.excluir(id);
     }
     
-    public static void listar(String filtro){
-        
+    public static List<Produto> listar(String filtro)throws SQLException, ClassNotFoundException{
+        return ProdutoDAO.listar(filtro);
     }
 }
