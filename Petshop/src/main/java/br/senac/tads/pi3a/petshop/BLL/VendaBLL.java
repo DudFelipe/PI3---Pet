@@ -16,14 +16,6 @@ public class VendaBLL {
         
     }
     
-    public static void alterar(Venda v){
-        
-    }
-    
-    public static void excluir(int id){
-        
-    }
-    
     public static void listar(String filtro){
         
     }
