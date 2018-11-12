@@ -5,7 +5,10 @@
  */
 package br.senac.tads.pi3a.petshop.Modelos;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.util.List;
+import java.util.Date;
 import java.math.BigDecimal;
 
 /**
@@ -14,23 +17,26 @@ import java.math.BigDecimal;
  */
 public class Venda {
     private Cliente cliente;
-    private Pet pet;
+   // private Pet pet;
+    private Date dataVenda;
     private Funcionario funcionario;
     private List<Produto> produtos;
     private List<Servico> servicos;
     private BigDecimal valorTotal;
-    private boolean fechada;
+    //private boolean fechada;
 
     public Venda() {
         
     }
     
-    public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, Funcionario funcionario) {
+    public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, 
+            Funcionario funcionario,Date data) {
         this.cliente = cliente;
-        this.pet = pet;
+        //this.pet = pet;
         this.produtos = produtos;
         this.servicos = servicos;
         this.funcionario = funcionario;
+        this.dataVenda= data;
         
     }
 
@@ -42,13 +48,13 @@ public class Venda {
         this.cliente = cliente;
     }
 
-    public Pet getPet() {
-        return this.pet;
+  /* public Pet getPet() {
+       return this.pet;
     }
 
     public void setPet(Pet pet) {
-        this.pet = pet;
-    }    
+       this.pet = pet;
+    } */   
 
     public List<Produto> getProdutos() {
         return this.produtos;
