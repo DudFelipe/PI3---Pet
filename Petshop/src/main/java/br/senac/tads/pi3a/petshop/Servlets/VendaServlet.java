@@ -35,12 +35,29 @@ public class VendaServlet extends HttpServlet {
             throws ServletException, IOException{
         List<Produto> produtos=null;
         List<Servico> servicos=null;
+        List<Cliente> clientes=null;
         
         try {
             servicos = ServicoBLL.listar();
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         }
+        
+        try{
+            clientes = ClienteBLL.listar();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        try{
+            produtos = ProdutoBLL.listar();
+        }catch(exception ex){
+            ex.printStackTrace
+        }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vendas.jsp");
+        dispatcher.forward(request, response);
         
         request.setAttribute("servicos", servicos);
         
