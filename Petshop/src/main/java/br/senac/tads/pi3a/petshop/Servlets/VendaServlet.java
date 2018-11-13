@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendaServlet", urlPatterns = {"/VendaServlet"})
 public class VendaServlet extends HttpServlet {
     
-    
+  /*  
     protected void doGet(HttpServletRequest request, HttpServletResponse responde)
             throws ServletException, IOException{
         List<Produto> produtos=null;
@@ -73,12 +73,12 @@ public class VendaServlet extends HttpServlet {
        List<Produto> produto = null;
        List<Servico> servico = null;
        
-       
+      
        
      
        
        
        
     }
-
+*/
 }
