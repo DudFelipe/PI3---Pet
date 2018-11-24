@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-<<<<<<< HEAD
 <script type="text/javascript">
 
  function excluir(elemento) {
@@ -22,9 +21,6 @@
 }
 
 </script>
-=======
-
->>>>>>> Diogo
 
 
     <div class="wrapper">
@@ -113,7 +109,6 @@
                             </thead>
                             <tbody>
                                 <tr>
-<<<<<<< HEAD
                                     <td>1</th>
                                     <td>Coleira</td>
                                     <td>10</td>
@@ -125,19 +120,6 @@
                                     <td>Banho</td>
                                     <td>999</td>
                                     <td>R$45,00</td>
-=======
-                                    <td>1</td>
-                                    <td>Coleira</td>
-                                    <td>10</td>
-                                    <td>R$10</td>
-                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Banho</td>
-                                    <td>999</td>
-                                    <td>R$45</td>
->>>>>>> Diogo
                                     <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
                                 </tr>
                             </tbody>
@@ -158,7 +140,6 @@
                             <thead>
                             </thead>
                             <tbody>
-<<<<<<< HEAD
                                 <tr>
                                     <td>1</th>
                                     <td>Coleira</td>
@@ -166,8 +147,6 @@
                                     <td>R$14,00</td>
                                     <td><span id="testeXX" class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this);"></span></td>
                                 </tr>
-=======
->>>>>>> Diogo
            
                             </tbody>
                         </table>
@@ -202,14 +181,10 @@
         var valor_total = 0;
 
         $(document).ready(function () {
-<<<<<<< HEAD
 
             var produtos_disponiveis = [];
             var produtos_selecionados = [];
 
-=======
-            
->>>>>>> Diogo
             $('#tabelaitens').DataTable({
 
                 "language": {
@@ -229,7 +204,6 @@
             });
             $(".adicionarproduto").on("click", function () {
 
-<<<<<<< HEAD
                 var qtd = prompt("Digite a quantidade:");
                 if (qtd != null) {
 
@@ -243,64 +217,6 @@
                 }
             });
 
-=======
-                var novo_produto = true;
-                var qtd = parseInt(prompt("Digite a quantidade:"));
-                if (qtd != null && qtd > 0) {
-
-                    if( parseInt($(this).closest('tr').find('td').eq(2).text()) < qtd ) {
-                        alert("Estoque insuficiente deste produto");
-                        return;
-                    }
-
-                    $(this).closest('tr').find('td').eq(2).text( parseInt($(this).closest('tr').find('td').eq(2).text()) - qtd);
-
-                    for (var i = 0; i < produtos_selecionados.length; i++) {
-                        if(produtos_selecionados[i].id == $(this).closest('tr').find('td').eq(0).text()) {
-                            novo_produto = false;
-                        }
-                    }
-
-
-                    if(novo_produto) {
-                        $('#tabelacarrinho').append('<tr>' +
-                            '<td>' + $(this).closest('tr').find('td').eq(0).text() + '</td>' +
-                            '<td>' + $(this).closest('tr').find('td').eq(1).text() + '</td>' +
-                            '<td>' + qtd + '</td>' +
-                            '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
-                            '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this, ' +  $(this).closest('tr').find('td').eq(0).text() + ')" id="aka"></span></td>' +
-                            '</tr>');
-                    } else {
-                        var tabela = document.getElementById('tabelacarrinho');
-                        var linhas = tabela.rows.length;
-
-                        for(var i=0; i < linhas; i++){
-                          var row = tabela.rows[i];
-
-                          if (row.cells[0].innerHTML == $(this).closest('tr').find('td').eq(0).text()) { //se for o item que estou procurando
-                                row.cells[2].innerHTML = parseInt(row.cells[2].innerHTML) + qtd;
-                          }
-
-                        }
-                    }
-
-                    valor_total += parseInt( parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")) * qtd );
-
-                    produtos_selecionados.push({
-                        id: $(this).closest('tr').find('td').eq(0).text(),
-                        nome: $(this).closest('tr').find('td').eq(1).text(),
-                        valorunitario: parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")),
-                        qtd: qtd
-                    });
-
-                    $("#valortotal").text("R$" + valor_total);
-
-                    console.log(produtos_selecionados);
-                }
-            });
-            
-            
->>>>>>> Diogo
         });
 
         function excluir(elemento, idproduto) {
