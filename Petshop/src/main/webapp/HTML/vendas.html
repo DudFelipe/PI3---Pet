@@ -13,7 +13,18 @@
 </head>
 
 <body>
+<<<<<<< HEAD
+<script type="text/javascript">
 
+ function excluir(elemento) {
+    console.log(elemento);
+    $(elemento).closest('tr').remove();
+}
+
+</script>
+=======
+
+>>>>>>> Diogo
 
 
     <div class="wrapper">
@@ -102,6 +113,19 @@
                             </thead>
                             <tbody>
                                 <tr>
+<<<<<<< HEAD
+                                    <td>1</th>
+                                    <td>Coleira</td>
+                                    <td>10</td>
+                                    <td>R$10,00</td>
+                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</th>
+                                    <td>Banho</td>
+                                    <td>999</td>
+                                    <td>R$45,00</td>
+=======
                                     <td>1</td>
                                     <td>Coleira</td>
                                     <td>10</td>
@@ -113,6 +137,7 @@
                                     <td>Banho</td>
                                     <td>999</td>
                                     <td>R$45</td>
+>>>>>>> Diogo
                                     <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
                                 </tr>
                             </tbody>
@@ -133,6 +158,16 @@
                             <thead>
                             </thead>
                             <tbody>
+<<<<<<< HEAD
+                                <tr>
+                                    <td>1</th>
+                                    <td>Coleira</td>
+                                    <td>10</td>
+                                    <td>R$14,00</td>
+                                    <td><span id="testeXX" class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this);"></span></td>
+                                </tr>
+=======
+>>>>>>> Diogo
            
                             </tbody>
                         </table>
@@ -167,7 +202,14 @@
         var valor_total = 0;
 
         $(document).ready(function () {
+<<<<<<< HEAD
+
+            var produtos_disponiveis = [];
+            var produtos_selecionados = [];
+
+=======
             
+>>>>>>> Diogo
             $('#tabelaitens').DataTable({
 
                 "language": {
@@ -187,6 +229,21 @@
             });
             $(".adicionarproduto").on("click", function () {
 
+<<<<<<< HEAD
+                var qtd = prompt("Digite a quantidade:");
+                if (qtd != null) {
+
+                    $('#tabelacarrinho').append('<tr>' +
+                        '<td>' + $(this).closest('tr').find('td').eq(0).text() + '</td>' +
+                        '<td>' + $(this).closest('tr').find('td').eq(1).text() + '</td>' +
+                        '<td>' + qtd + '</td>' +
+                        '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
+                        '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this)"></span></td>' +
+                        '</tr>');
+                }
+            });
+
+=======
                 var novo_produto = true;
                 var qtd = parseInt(prompt("Digite a quantidade:"));
                 if (qtd != null && qtd > 0) {
@@ -243,6 +300,7 @@
             });
             
             
+>>>>>>> Diogo
         });
 
         function excluir(elemento, idproduto) {
