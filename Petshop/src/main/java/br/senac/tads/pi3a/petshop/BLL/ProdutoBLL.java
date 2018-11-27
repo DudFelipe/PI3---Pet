@@ -73,4 +73,9 @@ public class ProdutoBLL {
     public static List<Produto> listar(String filtro)throws SQLException, ClassNotFoundException{
         return ProdutoDAO.listar(filtro);
     }
+    
+    public static Produto obterProduto(int id) throws SQLException{
+        return ProdutoDAO.obterProduto(id);
+}
+
 }
