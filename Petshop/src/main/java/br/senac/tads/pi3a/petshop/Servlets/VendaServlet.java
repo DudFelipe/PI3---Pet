@@ -8,6 +8,7 @@ package br.senac.tads.pi3a.petshop.Servlets;
 import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.BLL.ProdutoBLL;
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
+import br.senac.tads.pi3a.petshop.DAO.ProdutoDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import br.senac.tads.pi3a.petshop.Modelos.Produto;
 import br.senac.tads.pi3a.petshop.Modelos.Servico;
@@ -51,7 +52,11 @@ public class VendaServlet extends HttpServlet {
             ex.printStackTrace();
         }
         
-        
+        try{
+            produtos = ProdutoBLL.listar(null);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
         request.setAttribute("servicos", servicos);
         
