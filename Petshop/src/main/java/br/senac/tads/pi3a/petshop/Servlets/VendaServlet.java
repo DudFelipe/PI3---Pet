@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3a.petshop.Servlets;
 
+import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.BLL.ProdutoBLL;
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
@@ -30,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendaServlet", urlPatterns = {"/VendaServlet"})
 public class VendaServlet extends HttpServlet {
     
-  /*  
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse responde)
             throws ServletException, IOException{
         List<Produto> produtos=null;
@@ -50,14 +51,7 @@ public class VendaServlet extends HttpServlet {
             ex.printStackTrace();
         }
         
-        try{
-            produtos = ProdutoBLL.listar();
-        }catch(exception ex){
-            ex.printStackTrace
-        }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/vendas.jsp");
-        dispatcher.forward(request, response);
         
         request.setAttribute("servicos", servicos);
         
@@ -80,5 +74,5 @@ public class VendaServlet extends HttpServlet {
        
        
     }
-*/
+
 }
