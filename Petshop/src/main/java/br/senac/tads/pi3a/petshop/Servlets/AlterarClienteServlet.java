@@ -6,11 +6,16 @@
 package br.senac.tads.pi3a.petshop.Servlets;
 
 import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
+import br.senac.tads.pi3a.petshop.DAO.FilialDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -89,16 +94,22 @@ public class AlterarClienteServlet extends HttpServlet {
             c.setSenha(request.getParameter("senha"));
             c.setTipoAcesso(Integer.parseInt(request.getParameter("tipoacesso")));
             
+            Filial f = new Filial();
+            try {
+                f = FilialDAO.obterFilial(Integer.parseInt(request.getParameter("filial")));
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            c.setFilial(f);
+            
             //Depois de armazenar os novos dados do cliente, é chamado o método de validação alterar().
             //Esse método, por sua vez, chama o método responsável por realizar a alteração no banco de dados (caso todos os dados estejam válidos)
             ClienteBLL.alterar(c);
             
-            clientes = ClienteBLL.listar();
-            request.setAttribute("clientes", clientes);
+          
             
             //Por fim, a página cliente.jsp é apresentada novamente ao usuário.
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cliente.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/ClienteServlet");
         }
         catch(Exception ex){
             ex.printStackTrace();

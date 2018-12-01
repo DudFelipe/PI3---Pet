@@ -21,73 +21,7 @@
     </head>
     <body>
         <div class="wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <img src="assets/images/logo.png">
-                    <strong></strong>
-                </div>
-
-                <ul class="list-unstyled components">
-                    <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                    <li>
-                        <a href="#vendas" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Vendas
-                        </a>
-                        <ul class="collapse list-unstyled" id="vendas">
-                            <li><a href="#">Realizar uma venda</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#produtos" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-list-alt"></i>
-                            Produtos
-                        </a>
-                        <ul class="collapse list-unstyled" id="produtos">
-                            <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/produtos.html">Cadastrar um produto</a></li>
-                            <li><a href="#">Listar produtos</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="active">
-                        <a href="#servicos" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Serviços
-                        </a>
-                        <ul class="collapse list-unstyled" id="servicos">
-                            <li><a href="#">Cadastrar um serviço</a></li>
-                            <li><a href="#">Listar serviços</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Clientes
-                        </a>
-                        <ul class="collapse list-unstyled" id="clientes">
-                            <li><a href="/Users/giovanebarreira/Desktop/PI3---Pet/Petshop/src/main/webapp/HTML/clientes.html">Cadastrar um cliente</a></li>
-                            <li><a href="#">Listar clientes</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Relatórios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                            Sair
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <jsp:include page="menu.jsp"></jsp:include>
 
             <div id="content">
                 <nav class="navbar navbar-default">
@@ -115,14 +49,25 @@
                           " method="post" 
                           >
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="servico">Serviço</label>
                                 <input type="text" class="form-control" id="servico" name="descricao" value="${servico.descricao}">
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="preco">Preço</label>
                                 <input type="text" class="form-control" id="preco" name="preco" value="${servico.preco}">
+                            </div>
+                            
+                            <div class="form-group col-md-4">
+                                <label for="preco">Filial</label>
+                                <select id="inputState" class="form-control" name="filial">
+                                    <option selected>Selecione...</option>
+                                    <option value="1" <c:if test="${servico.getFilial().getId() == 1}">selected</c:if>>São Paulo</option>
+                                    <option value="2" <c:if test="${servico.getFilial().getId() == 2}">selected</c:if>>Campina Grande</option>
+                                    <option value="3" <c:if test="${servico.getFilial().getId() == 3}">selected</c:if>>Brasília</option>
+                                    <option value="4" <c:if test="${servico.getFilial().getId() == 4}">selected</c:if>>Joinville</option>
+                                </select>
                             </div>
                         </div>
 
@@ -180,6 +125,7 @@
                                 <th scope="col">Serviço</th>
                                 <th scope="col">Tamanho Animal</th>
                                 <th scope="col">Preço</th>
+                                <th scope="col">Filial</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
@@ -188,8 +134,13 @@
                             <c:forEach items="${servicos}" var="s">
                                 <tr>
                                     <td><c:out value="${s.descricao}" /></td>
-                                    <td><c:out value="${s.tamanhoAnimal}" /></td>
+                                    <td>
+                                        <c:if test="${s.tamanhoAnimal == 1}"> Pequeno</c:if>
+                                        <c:if test="${s.tamanhoAnimal == 2}"> Médio</c:if>
+                                        <c:if test="${s.tamanhoAnimal == 3}"> Grande</c:if>
+                                    </td>
                                     <td><c:out value="${s.preco}" /></td>
+                                    <td><c:out value="${s.getFilial().getCidade()}" /></td>
                                     <td><a href="${pageContext.request.contextPath}/AlterarServicoServlet?id=${s.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                                     <td><a href="${pageContext.request.contextPath}/ExcluirServicoServlet?id=${s.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
                                 </tr>

@@ -17,18 +17,28 @@ public class Produto {
     private String fabricante;
     private int quantidade;
     private String modelo;
+
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
     private long codBarras;
+    private Filial filial;
 
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal preco, String fabricante, int quantidade, String modelo, long codBarras) {
+    public Produto(String nome, BigDecimal preco, String fabricante, int quantidade, String modelo, long codBarras, Filial filial) {
         this.nome = nome;
         this.preco = preco;
         this.fabricante = fabricante;
         this.quantidade = quantidade;
         this.modelo = modelo;
         this.codBarras = codBarras;
+        this.filial = filial;
     }
 
     public String getNome() {

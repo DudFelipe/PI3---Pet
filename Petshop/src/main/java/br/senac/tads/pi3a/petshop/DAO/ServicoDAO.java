@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3a.petshop.DAO;
 
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import br.senac.tads.pi3a.petshop.Modelos.Servico;
 import br.senac.tads.pi3a.petshop.Utils.ConnectionUtils;
 import java.sql.Connection;
@@ -22,8 +23,8 @@ import java.util.List;
 public class ServicoDAO {
     
     public static void inserir(Servico s) throws SQLException, Exception{
-        String sql = "INSERT INTO Servico (descricao, preco, tamanho_animal) "
-                + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Servico (descricao, preco, tamanho_animal, idFilial) "
+                + "VALUES (?, ?, ?, ?)";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -35,6 +36,7 @@ public class ServicoDAO {
             pst.setString(1, s.getDescricao());
             pst.setBigDecimal(2, s.getPreco());
             pst.setInt(3, s.getTamanhoAnimal());
+            pst.setInt(4, s.getFilial().getId());
             
             pst.execute();
         }
@@ -48,7 +50,7 @@ public class ServicoDAO {
     }
     
     public static void alterar(Servico s) throws SQLException, ClassNotFoundException{
-        String sql = "UPDATE Servico SET descricao = ?, preco = ?, tamanho_animal = ? "
+        String sql = "UPDATE Servico SET descricao = ?, preco = ?, tamanho_animal = ?, idFilial = ? "
                 + "WHERE idServico = ?";
         
         Connection conn = null;
@@ -62,7 +64,9 @@ public class ServicoDAO {
             pst.setBigDecimal(2, s.getPreco());
             pst.setInt(3, s.getTamanhoAnimal());
             
-            pst.setInt(4, s.getId());
+            pst.setInt(4, s.getFilial().getId());
+            
+            pst.setInt(5, s.getId());
             
             pst.execute();
         }
@@ -76,7 +80,7 @@ public class ServicoDAO {
     }
     
     public static void excluir(int id) throws SQLException, ClassNotFoundException{
-        String sql = "DELETE FROM Servico WHERE idServico = ?"; 
+        String sql = "DELETE FROM servico WHERE idServico = ?"; 
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -99,7 +103,7 @@ public class ServicoDAO {
     }
     
     public static List<Servico> listar() throws SQLException, ClassNotFoundException{
-        String sql = "SELECT * FROM Servico";
+        String sql = "SELECT * FROM servico";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -111,7 +115,7 @@ public class ServicoDAO {
             pst = conn.prepareStatement(sql);
             
             ResultSet rs = pst.executeQuery();
-            
+
             while(rs.next()){
                 Servico s = new Servico();
                 
@@ -120,7 +124,13 @@ public class ServicoDAO {
                 s.setPreco(rs.getBigDecimal("preco"));
                 s.setTamanhoAnimal(rs.getInt("tamanho_animal"));
                 
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                s.setFilial(f);
+                
                 listaServico.add(s);
+                
+
             }
             
             return listaServico;
@@ -158,6 +168,10 @@ public class ServicoDAO {
                 s.setDescricao(rs.getString("descricao"));
                 s.setPreco(rs.getBigDecimal("preco"));
                 s.setTamanhoAnimal(rs.getInt("tamanho_animal"));
+                
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                s.setFilial(f);
                 
                 return s;
             }
