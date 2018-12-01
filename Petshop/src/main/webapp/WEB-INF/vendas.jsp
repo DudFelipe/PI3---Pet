@@ -110,26 +110,33 @@
                                 <tr>
                                     <th>Cod.</th>
                                     <th>Nome</th>
-                                    <th>Quantidade</th>
+                                    <th>Qtd</th>
+                                    <th>Tamanho do animal</th>    
                                     <th>Valor</th>
                                     <th>Adicionar</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:forEach items="${servicos}" var="s">
                                 <tr>
-                                    <td>1</th>
-                                    <td>Coleira</td>
-                                    <td>10</td>
-                                    <td>R$10,00</td>
+                                    <td><c:out value="${s.id}" /></th>
+                                    <td><c:out value="${s.descricao}" /></td>
+                                    <td>-</td>
+                                    <td><c:out value="${s.tamanhoAnimal}" /></td>
+                                    <td><c:out value="${s.preco}" /></td>
                                     <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
                                 </tr>
-                                <tr>
-                                    <td>2</th>
-                                    <td>Banho</td>
-                                    <td>999</td>
-                                    <td>R$45,00</td>
+                                </c:forEach>
+                                <c:forEach items="${produtos}" var="p">
+                                    <tr>
+                                    <td><c:out value="${p.id}" /></th>
+                                    <td><c:out value="${p.nome}" /></td>
+                                    <td><c:out value="${p.quantidade}" /></td>
+                                    <td>-</td>
+                                    <td><c:out value="${p.preco}" /></td>
                                     <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
-                                </tr>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

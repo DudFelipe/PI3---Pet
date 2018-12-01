@@ -2,7 +2,6 @@ br\senac\tads\pi3a\petshop\DAO\FuncionarioDAO.class
 br\senac\tads\pi3a\petshop\Modelos\Funcionario.class
 br\senac\tads\pi3a\petshop\BLL\FuncionarioBLL.class
 br\senac\tads\pi3a\petshop\Servlets\ExcluirClienteServlet.class
-br\senac\tads\pi3a\petshop\Servlets\ListaProduto.class
 br\senac\tads\pi3a\petshop\Servlets\ServicoServlet.class
 br\senac\tads\pi3a\petshop\Servlets\AlterarPetServlet.class
 br\senac\tads\pi3a\petshop\Servlets\PetsServlet.class
@@ -21,10 +20,8 @@ br\senac\tads\pi3a\petshop\DAO\ServicoDAO.class
 br\senac\tads\pi3a\petshop\Servlets\ListaVendaServlet.class
 br\senac\tads\pi3a\petshop\DAO\ProdutoDAO.class
 br\senac\tads\pi3a\petshop\Modelos\Produto.class
-br\senac\tads\pi3a\petshop\Servlets\ExcluirProduto.class
 br\senac\tads\pi3a\petshop\Servlets\LoginServlet.class
 br\senac\tads\pi3a\petshop\Modelos\Cliente.class
-br\senac\tads\pi3a\petshop\Servlets\AlterarProdutoServlet.class
 br\senac\tads\pi3a\petshop\Servlets\AlterarClienteServlet.class
 br\senac\tads\pi3a\petshop\Modelos\Venda.class
 br\senac\tads\pi3a\petshop\BLL\ProdutoBLL.class

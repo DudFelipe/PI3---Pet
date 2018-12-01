@@ -4,6 +4,10 @@
 -- ------------------------------------------------------
 -- Server version	8.0.12
 
+create database pi3_pet;
+
+use pi3_pet
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -59,7 +63,7 @@ CREATE TABLE `filiais` (
   PRIMARY KEY (`idfiliais`),
   KEY `idGerente_idx` (`idGerente`),
   CONSTRAINT `idGerente` FOREIGN KEY (`idGerente`) REFERENCES `usuario` (`idusuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,4 +271,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+
+
 -- Dump completed on 2018-11-21 11:51:46
+
+
