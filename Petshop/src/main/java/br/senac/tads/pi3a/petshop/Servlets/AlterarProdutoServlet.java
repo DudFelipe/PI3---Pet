@@ -37,6 +37,6 @@ public class AlterarProdutoServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    } </editor-fold>
+    } 
 
 }
