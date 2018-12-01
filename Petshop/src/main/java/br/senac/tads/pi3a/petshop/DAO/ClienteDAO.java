@@ -6,6 +6,7 @@
 package br.senac.tads.pi3a.petshop.DAO;
 
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import br.senac.tads.pi3a.petshop.Utils.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,8 +29,8 @@ public class ClienteDAO {
     //Responsável por inserir um novo cliente no banco de dados
     public static void inserir(Cliente c) throws SQLException, Exception{
         //Comando de inserção no banco de dados, com alguns parâmetros a serem preparados
-        String sql = "INSERT INTO usuario (cpf, nome, nascimento, telefone, email, sexo, rg, endereco, senha, tipoacesso) " +
-                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO usuario (cpf, nome, nascimento, telefone, email, sexo, rg, endereco, senha, tipoacesso, filial) " +
+                     " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -52,6 +53,7 @@ public class ClienteDAO {
             pst.setString(8, c.getEndereco());
             pst.setString(9, c.getSenha());
             pst.setInt(10, c.getTipoAcesso());
+            pst.setInt(11, c.getFilial().getId());
             
             pst.execute(); //Executando a query e realizando a inserção no banco de dados.
         }
@@ -71,8 +73,7 @@ public class ClienteDAO {
         /*String sql = "UPDATE Usuario SET Nome = ?, nascimento = ?, CPF = ?, RG = ?, Telefone = ?, Email = ?, Sexo = ? "
                 + "WHERE id = ?";*/
         
-        String sql = "UPDATE usuario SET cpf = ?, nome = ?, nascimento = ?, telefone = ?, email = ?, "
-                + "sexo = ?, rg = ?, endereco = ?, senha = ?, tipoacesso = ? WHERE idUsuario = ?"; 
+        String sql = "UPDATE usuario SET cpf = ?, nome = ?, nascimento = ?, telefone = ?, email = ?, sexo = ?, rg = ?, endereco = ?, senha = ?, tipoacesso = ?, idFilial = ? WHERE idUsuario = ?"; 
 
         Connection conn = null;
         PreparedStatement pst = null;
@@ -94,8 +95,10 @@ public class ClienteDAO {
             pst.setString(6, c.getSexo() + "");
             pst.setString(7, c.getRg());
             pst.setString(8, c.getEndereco());
-            pst.setInt(9, c.getTipoAcesso());
-            pst.setInt(10, c.getId());
+            pst.setString(9, c.getSenha());
+            pst.setInt(10, c.getTipoAcesso());
+            pst.setInt(11, c.getFilial().getId());
+            pst.setInt(12, c.getId());
             
             pst.execute(); //Executando a instrução SQL e realizando a alteração dos dados
         }
@@ -137,9 +140,15 @@ public class ClienteDAO {
     
     //Método listar
     //Responsável por resgatar todos os clientes cadastrados e retornar uma lista com os mesmos
-    public static List<Cliente> listar() throws SQLException, ClassNotFoundException{
+    public static List<Cliente> listar(boolean apenasCliente) throws SQLException, ClassNotFoundException{
+        String filtro;
         //Comando SELECT para retornar todos os dados de todos os clientes
-        String sql = "SELECT * FROM usuario WHERE tipoAcesso = 1";
+        if(apenasCliente)
+            filtro = "tipoAcesso = 1";
+        else
+            filtro = "1=1";
+        
+        String sql = "SELECT * FROM usuario WHERE " + filtro;
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -168,6 +177,10 @@ public class ClienteDAO {
                 c.setEndereco(rs.getString("endereco"));
                 c.setSenha(rs.getString("senha"));
                 c.setTipoAcesso(rs.getInt("tipoacesso"));
+                
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                c.setFilial(f);
                 
                 listaCliente.add(c); //Com todos os dados do cliente armazenado, adiciona o cliente na lista.
             }
@@ -219,6 +232,11 @@ public class ClienteDAO {
                 c.setSenha(rs.getString("senha"));
                 c.setTipoAcesso(rs.getInt("tipoacesso"));
                 
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                
+                c.setFilial(f);
+                
                 return c; //Retorna esse cliente depois de armazenar seus dados
             }
         }
@@ -267,6 +285,10 @@ public class ClienteDAO {
                 c.setEndereco(rs.getString("endereco"));
                 c.setSenha(rs.getString("senha"));
                 c.setTipoAcesso(rs.getInt("tipoacesso"));
+                
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                c.setFilial(f);
                 
                 return c; //Retorna esse cliente depois de armazenar seus dados
             }

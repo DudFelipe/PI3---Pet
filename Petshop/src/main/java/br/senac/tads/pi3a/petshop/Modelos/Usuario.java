@@ -22,10 +22,16 @@ public abstract class Usuario {
     private String email;
     private String endereco;
     private String senha;
+    private Filial filial;
     
     /**
      * tipoAcesso = 1 -> Acesso de Cliente
-     * tipoAcesso = 2 -> Acesso de Funcionário
+     * tipoAcesso = 2 -> Acesso de Funcionário de filial
+     * tipoAcesso = 3 -> Acesso de Funcionário Gerente de filial
+     * tipoAcesso = 4 -> Acesso de Funcionário Gerente Regional
+     * tipoAcesso = 5 -> Acesso de Funcionário TI
+     * tipoAcesso = 6 -> Acesso de Funcionário Backoffice
+     * tipoAcesso = 7 -> Acesso de Funcionário RH
      */
     private int tipoAcesso;
     private char sexo;
@@ -34,7 +40,15 @@ public abstract class Usuario {
         
     }
 
-    public Usuario(int id, String nome, Date dtNascimento, String cpf, String rg, String telefone, String email, String endereco, String senha, int tipoAcesso, char sexo) {
+    public Filial getFilial() {
+        return filial;
+    }
+
+    public void setFilial(Filial filial) {
+        this.filial = filial;
+    }
+    
+    public Usuario(int id, String nome, Date dtNascimento, String cpf, String rg, String telefone, String email, String endereco, String senha, int tipoAcesso, char sexo, Filial filial) {
         this.id = id;
         this.nome = nome;
         this.dtNascimento = dtNascimento;
@@ -46,6 +60,7 @@ public abstract class Usuario {
         this.senha = senha;
         this.tipoAcesso = tipoAcesso;
         this.sexo = sexo;
+        this.filial = filial;
     }
 
     

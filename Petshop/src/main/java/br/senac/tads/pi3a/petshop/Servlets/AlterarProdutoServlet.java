@@ -94,7 +94,10 @@ public class AlterarProdutoServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-}
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    } 
 
 
 

@@ -16,74 +16,7 @@
     <body>
 
         <div class="wrapper">
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <img src="assets/images/logo.png">
-                    <strong></strong>
-                </div>
-
-                <ul class="list-unstyled components">
-                    <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                    <li>
-                        <a href="#vendas" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Vendas
-                        </a>
-                        <ul class="collapse list-unstyled" id="vendas">
-                            <li><a href="#">Realizar uma venda</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#produtos" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-heart"></i>
-                            Produtos
-                        </a>
-                        <ul class="collapse list-unstyled" id="produtos">
-                            <li><a href="#">Cadastrar um produto</a></li>
-                            <li><a href="#">Listar produtos</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#servicos" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Serviços
-                        </a>
-                        <ul class="collapse list-unstyled" id="servicos">
-                            <li><a href="#">Cadastrar um serviço</a></li>
-                            <li><a href="#">Listar serviços</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="active">
-                        <a href="#clientes" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Clientes
-                        </a>
-                        <ul class="collapse list-unstyled" id="clientes">
-                            <li><a href="#">Cadastrar um cliente</a></li>
-                            <li><a href="#">Listar clientes</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Relatórios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-off"></i>
-                            Sair
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
+            <jsp:include page="menu.jsp"></jsp:include>
             <div id="content">
                 <nav class="navbar navbar-default">
                     <div style="font-size: 20px; text-align: center;">Gerenciar Usuários</div>
@@ -158,9 +91,20 @@
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
                                 <label for="telefone">Telefone</label>
                                 <input type="text" class="form-control" id="telefone" name="telefone" value="${cliente.telefone}">
+                            </div>
+                            
+                            <div class="form-group col-md-3">
+                                <label for="telefone">Filial</label>
+                                <select id="inputState" class="form-control" name="filial">
+                                    <option selected>Selecione...</option>
+                                    <option value="1" <c:if test="${cliente.getFilial().getId() == 1}">selected</c:if>>São Paulo</option>
+                                    <option value="2" <c:if test="${cliente.getFilial().getId() == 2}">selected</c:if>>Campina Grande</option>
+                                    <option value="3" <c:if test="${cliente.getFilial().getId() == 3}">selected</c:if>>Brasília</option>
+                                    <option value="4" <c:if test="${cliente.getFilial().getId() == 4}">selected</c:if>>Joinville</option>
+                                </select>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -179,7 +123,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="senha">Senha</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
+                                <input type="password" class="form-control" id="senha" name="senha" value="${cliente.senha}">
                             </div>
 
                         </div>
@@ -211,6 +155,7 @@
                                 <th scope="col">Telefone</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Endereço</th>
+                                <th scope="col">Filial</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
@@ -226,6 +171,7 @@
                                     <td><c:out value="${c.telefone}" /></td>
                                     <td><c:out value="${c.email}" /></td>
                                     <td><c:out value="${c.endereco}" /></td>
+                                    <td><c:out value="${c.getFilial().getCidade()}" /></td>
 
                                     <td><a href="${pageContext.request.contextPath}/AlterarClienteServlet?id=${c.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                                     <td><a href="${pageContext.request.contextPath}/ExcluirClienteServlet?id=${c.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
@@ -254,12 +200,12 @@
                 $( "#calendario" ).datepicker( "option", "dateFormat", "dd/mm/yy");
                 $('#tabelaservicos').DataTable({
                     "language": {
-                        "lengthMenu": "Mostrando MENU resultados por página",
-                        "zeroRecords": "Nada encontrado - desculpe.",
-                        "info": "Mostrando página PAGE de PAGES",
-                        "infoEmpty": "Não há dados para mostrar",
-                        "infoFiltered": "(filtrado no total de MAX resultados)",
-                        "search": "Procurar: ",
+                    "lengthMenu": "Mostrando _MENU_ resultados por página",
+                    "zeroRecords": "Nada encontrado - desculpe.",
+                    "infoEmpty": "Não há dados para mostrar",
+                    "infoFiltered": "(filtrado no total de _MAX_ resultados)",
+                    "search": "Procurar: ",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
                         "paginate": {
                             "first": "Primeiro",
                             "last": "Último",

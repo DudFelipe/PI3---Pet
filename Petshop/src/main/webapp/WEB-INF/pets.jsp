@@ -16,67 +16,7 @@
 <body>
 
     <div class="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="assets/images/logo.png">
-                <strong></strong>
-            </div>
-
-            <ul class="list-unstyled components">
-                <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                <li >
-                        <a href="vendas.html" >
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Vendas
-                        </a>
-                    </li>
-    
-                    <li>
-                        <a href="produtos.html" >
-                            <i class="glyphicon glyphicon-list-alt"></i>
-                            Produtos
-                        </a>
-                    </li>
-    
-                    <li>
-                        <a href="servicos.html">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Serviços
-                        </a>
-                       
-                    </li>
-                    <li  class="active">
-                        <a href="pets.html">
-                            <i class="fas fa-paw">
-                            </i>
-                            Pets
-                        </a>
-                    </li>
-    
-                    <li >
-                        <a href="clientes.html" >
-                            <i class="glyphicon glyphicon-user"></i>
-                            Usuário
-                        </a>
-                    </li>
-    
-                    <li>
-                        <a href="relatorio.html">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Relatórios
-                        </a>
-                    </li>
-    
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                            Sair
-                        </a>
-                    </li>
-            </ul>
-        </nav>
-
+        <jsp:include page="menu.jsp"></jsp:include>
         <div id="content">
             <nav class="navbar navbar-default">
                     <div style="font-size: 20px; text-align: center;">Gerenciar Pets</div>
@@ -163,13 +103,15 @@
                             <th scope="col">Especie</th>
                             <th scope="col">Porte</th>
                             <th scope="col">Nascimento</th>
+                             <th scope="col">Editar</th>
+                             <th scope="col">Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${pets}" var="p">
                             <tr>
                                 <td scope="row"><c:out value="${p.id}" /></td>
-                                <td><c:out value="${p.idCliente.nome}" /></td>
+                                <td><c:out value="${p.getIdCliente().getNome()}" /></td>
                                 <td><c:out value="${p.nome}" /></td>
                                 <td><c:out value="${p.especie}" /></td>
                                 <td>
@@ -179,8 +121,8 @@
                                 </td>
                                 <td><c:out value="${p.nascimento}" /></td>
 
-                                <td><a href="${pageContext.request.contextPath}/AlterarPetServlet?id=${p.id}">Alterar</a></td>
-                                <td><a href="${pageContext.request.contextPath}/ExcluirPetServlet?id=${p.id}">Excluir</a></td>
+                                <td><a href="${pageContext.request.contextPath}/AlterarPetServlet?id=${p.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                                <td><a href="${pageContext.request.contextPath}/ExcluirPetServlet?id=${p.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
                             </tr>
                         </c:forEach>
 
