@@ -1,0 +1,7 @@
+br/senac/tads/pi3a/petshop/Servlets/ExcluirServicoServlet.class
+br/senac/tads/pi3a/petshop/BLL/PetBLL.class
+br/senac/tads/pi3a/petshop/Servlets/ExcluirPetServlet.class
+br/senac/tads/pi3a/petshop/filtro/AutorizacaoFilter.class
+br/senac/tads/pi3a/petshop/Servlets/ExcluirClienteServlet.class
+br/senac/tads/pi3a/petshop/Utils/ConnectionUtils.class
+br/senac/tads/pi3a/petshop/Servlets/ListaVendaServlet.class
