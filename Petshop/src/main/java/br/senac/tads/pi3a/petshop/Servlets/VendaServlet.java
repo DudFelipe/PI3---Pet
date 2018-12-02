@@ -5,8 +5,10 @@
  */
 package br.senac.tads.pi3a.petshop.Servlets;
 
+import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.BLL.ProdutoBLL;
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
+import br.senac.tads.pi3a.petshop.DAO.ProdutoDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import br.senac.tads.pi3a.petshop.Modelos.Produto;
 import br.senac.tads.pi3a.petshop.Modelos.Servico;
@@ -30,15 +32,29 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "VendaServlet", urlPatterns = {"/VendaServlet"})
 public class VendaServlet extends HttpServlet {
     
-    
+  
     protected void doGet(HttpServletRequest request, HttpServletResponse responde)
             throws ServletException, IOException{
         List<Produto> produtos=null;
         List<Servico> servicos=null;
+        List<Cliente> clientes=null;
         
         try {
             servicos = ServicoBLL.listar();
         } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        try{
+            clientes = ClienteBLL.listar();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        try{
+            produtos = ProdutoBLL.listar(null);
+        }catch(Exception ex){
             ex.printStackTrace();
         }
         
@@ -56,7 +72,7 @@ public class VendaServlet extends HttpServlet {
        List<Produto> produto = null;
        List<Servico> servico = null;
        
-       
+      
        
      
        

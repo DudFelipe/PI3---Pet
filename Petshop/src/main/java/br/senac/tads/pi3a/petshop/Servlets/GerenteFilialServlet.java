@@ -8,15 +8,17 @@ package br.senac.tads.pi3a.petshop.Servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Marcos
+ * @author vyvis
  */
-public class ExcluirProduto extends HttpServlet {
+@WebServlet(name = "GerenteFilialServlet", urlPatterns = {"/GerenteFilialServlet"})
+public class GerenteFilialServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +37,10 @@ public class ExcluirProduto extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ExcluirProduto</title>");            
+            out.println("<title>Servlet GerenteFilialServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ExcluirProduto at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GerenteFilialServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

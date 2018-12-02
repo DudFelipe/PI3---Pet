@@ -31,9 +31,14 @@ public class LoginServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
+        String code = request.getParameter("code");
+        if ("99".equals(code)) {
+            request.setAttribute("msgErro", "Vc saiu do sistema");
+        }
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher(
-                        "/WEB-INF/login.jsp");
+                        "/WEB-INF/jsp/login.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -58,7 +63,7 @@ public class LoginServlet extends HttpServlet {
                 // Login com sucesso.
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
-                response.sendRedirect(request.getContextPath() + "/protegido/cliente");
+                response.sendRedirect(request.getContextPath() + "/VendaServlet");
                 return;
             }
         }

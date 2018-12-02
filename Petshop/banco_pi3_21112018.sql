@@ -1,10 +1,12 @@
-CREATE DATABASE  IF NOT EXISTS `pi3_pet` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `pi3_pet`;
 -- MySQL dump 10.13  Distrib 8.0.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: pi3_pet
 -- ------------------------------------------------------
 -- Server version	8.0.12
+
+create database pi3_pet;
+
+use pi3_pet
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,16 +27,17 @@ DROP TABLE IF EXISTS `detalhes_pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `detalhes_pedido` (
-  `idPedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idPedido` int(11) NOT NULL,
   `idProduto` int(11) DEFAULT NULL,
   `idServico` int(11) DEFAULT NULL,
   `quantidade` int(11) DEFAULT '1',
-  PRIMARY KEY (`idPedido`),
   KEY `idProduto_idx` (`idProduto`),
   KEY `idServico_idx` (`idServico`),
+  KEY `idPedido_idx` (`idPedido`),
+  CONSTRAINT `idPedido` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idpedido`),
   CONSTRAINT `idProduto` FOREIGN KEY (`idProduto`) REFERENCES `produto` (`idproduto`),
   CONSTRAINT `idServico` FOREIGN KEY (`idServico`) REFERENCES `servico` (`idservico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,31 +50,29 @@ LOCK TABLES `detalhes_pedido` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `funcionario`
+-- Table structure for table `filiais`
 --
 
-DROP TABLE IF EXISTS `funcionario`;
+DROP TABLE IF EXISTS `filiais`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `funcionario` (
-  `idFuncionario` int(11) NOT NULL AUTO_INCREMENT,
-  `idUsuario` int(11) DEFAULT NULL,
-  `tipoAcesso` int(11) DEFAULT NULL,
-  `usuario` varchar(45) DEFAULT NULL,
-  `senha` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idFuncionario`),
-  KEY `idUsuario_idx` (`idUsuario`),
-  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idusuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `filiais` (
+  `idfiliais` int(11) NOT NULL,
+  `cidade` varchar(45) DEFAULT NULL,
+  `idGerente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idfiliais`),
+  KEY `idGerente_idx` (`idGerente`),
+  CONSTRAINT `idGerente` FOREIGN KEY (`idGerente`) REFERENCES `usuario` (`idusuario`)
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `funcionario`
+-- Dumping data for table `filiais`
 --
 
-LOCK TABLES `funcionario` WRITE;
-/*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
+LOCK TABLES `filiais` WRITE;
+/*!40000 ALTER TABLE `filiais` DISABLE KEYS */;
+/*!40000 ALTER TABLE `filiais` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -83,16 +84,23 @@ DROP TABLE IF EXISTS `pedido`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL AUTO_INCREMENT,
-  `idCliente` int(11) DEFAULT NULL,
+  `idCliente` int(11) NOT NULL,
+  `idFuncionario` int(11) NOT NULL,
   `idTipoPagamento` int(11) NOT NULL,
+  `idFilial` int(11) NOT NULL,
   `data` date DEFAULT NULL,
   `precoVenda` double NOT NULL,
+  `pedidocol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idPedido`),
   KEY `idCliente_idx` (`idCliente`),
   KEY `idTipoPagamento_idx` (`idTipoPagamento`),
+  KEY `idFuncionario_idx` (`idFuncionario`),
+  KEY `idFilial_idx` (`idFilial`),
   CONSTRAINT `idCliente` FOREIGN KEY (`idCliente`) REFERENCES `usuario` (`idusuario`),
+  CONSTRAINT `idFilial` FOREIGN KEY (`idFilial`) REFERENCES `filiais` (`idfiliais`),
+  CONSTRAINT `idFuncionario` FOREIGN KEY (`idFuncionario`) REFERENCES `usuario` (`idusuario`),
   CONSTRAINT `idTipoPagamento` FOREIGN KEY (`idTipoPagamento`) REFERENCES `tipopagamento` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,6 +113,36 @@ LOCK TABLES `pedido` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pet`
+--
+
+DROP TABLE IF EXISTS `pet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `pet` (
+  `idPet` int(11) NOT NULL AUTO_INCREMENT,
+  `idCliente` int(11) NOT NULL,
+  `nomepet` varchar(45) NOT NULL,
+  `especie` varchar(45) NOT NULL,
+  `porte` varchar(45) NOT NULL,
+  `nascimento` date DEFAULT NULL,
+  PRIMARY KEY (`idPet`),
+  KEY `idUsuario_idx` (`idCliente`),
+  CONSTRAINT `idUsuario` FOREIGN KEY (`idCliente`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pet`
+--
+
+LOCK TABLES `pet` WRITE;
+/*!40000 ALTER TABLE `pet` DISABLE KEYS */;
+INSERT INTO `pet` VALUES (1,2,'Lady','Cachorro','1','2017-02-10'),(2,1,'Lord','Pug','2','2010-10-10'),(3,2,'Danuskinha','Cachorro','3','2011-10-08');
+/*!40000 ALTER TABLE `pet` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `produto`
 --
 
@@ -113,6 +151,7 @@ DROP TABLE IF EXISTS `produto`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `produto` (
   `idProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `idFilial` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `preco` double NOT NULL,
   `fabricante` varchar(60) DEFAULT NULL,
@@ -120,8 +159,10 @@ CREATE TABLE `produto` (
   `modelo` varchar(60) DEFAULT NULL,
   `codigodebarras` varchar(45) DEFAULT NULL,
   `tamanho_animal` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idProduto`),
+  KEY `idFilialProduto_idx` (`idFilial`),
+  CONSTRAINT `idFilialProduto` FOREIGN KEY (`idFilial`) REFERENCES `filiais` (`idfiliais`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,11 +183,14 @@ DROP TABLE IF EXISTS `servico`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `servico` (
   `idServico` int(11) NOT NULL AUTO_INCREMENT,
+  `idFilial` int(11) NOT NULL,
   `descricao` varchar(60) DEFAULT NULL,
   `preco` double DEFAULT NULL,
   `tamanho_animal` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idServico`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idServico`),
+  KEY `idFilialServico_idx` (`idFilial`),
+  CONSTRAINT `idFilialServico` FOREIGN KEY (`idFilial`) REFERENCES `filiais` (`idfiliais`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +213,7 @@ CREATE TABLE `tipopagamento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,6 +234,7 @@ DROP TABLE IF EXISTS `usuario`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `idFilial` int(11) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `nome` varchar(70) NOT NULL,
   `nascimento` date NOT NULL,
@@ -198,9 +243,14 @@ CREATE TABLE `usuario` (
   `sexo` char(1) NOT NULL,
   `rg` varchar(12) NOT NULL,
   `endereco` varchar(150) NOT NULL,
+  `senha` varchar(60) NOT NULL,
+  `tipoacesso` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idUsuario`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `cpf_UNIQUE` (`cpf`),
+  KEY `idFilial_idx` (`idFilial`),
+  KEY `idFilial_idxx` (`idFilial`),
+  CONSTRAINT `idFilialUsuario` FOREIGN KEY (`idFilial`) REFERENCES `filiais` (`idfiliais`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,34 +263,6 @@ LOCK TABLES `usuario` WRITE;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `cliente` (
-  `idCliente` int(11) NOT NULL AUTO_INCREMENT,
-  `cpf` varchar(14) NOT NULL,
-  `nome` varchar(70) NOT NULL,
-  `nascimento` date NOT NULL,
-  `telefone` varchar(20) NOT NULL,
-  `email` varchar(60) NOT NULL,
-  `sexo` char(1) NOT NULL,
-  `rg` varchar(12) NOT NULL,
-  `endereco` varchar(150) NOT NULL,
-  PRIMARY KEY (`idCliente`),
-  UNIQUE KEY `cpf_UNIQUE` (`cpf`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -249,4 +271,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-10 13:53:20
+
+
+-- Dump completed on 2018-11-21 11:51:46
+
+
