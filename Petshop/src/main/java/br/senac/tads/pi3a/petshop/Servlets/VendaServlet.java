@@ -110,7 +110,7 @@ public class VendaServlet extends HttpServlet {
         }
         v.setCliente(c);
         
-        v.setValorTotal(valor_venda);
+        //v.setValorTotal(valor_venda);
         
         HttpSession sessao = request.getSession();
         Usuario logado = (Usuario) sessao.getAttribute("usuario");

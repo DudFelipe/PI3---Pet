@@ -102,7 +102,7 @@ public class Venda {
     }
 
     public void setFuncionario(Usuario funcionario) {
-        this.funcionario = funcionario;
+        //this.funcionario = funcionario;
     }
 
     public void calculaTotal() {
