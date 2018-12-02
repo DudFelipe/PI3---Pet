@@ -28,7 +28,7 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
         sessao.invalidate();
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+        response.sendRedirect(request.getContextPath() + "/login?code=99");
         
     }
     
