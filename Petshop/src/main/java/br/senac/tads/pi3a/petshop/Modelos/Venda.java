@@ -72,7 +72,7 @@ public class Venda {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
+    }  
 
     /* public Pet getPet() {
        return this.pet;
@@ -97,11 +97,11 @@ public class Venda {
         this.servicos = servicos;
     }
 
-    public Funcionario getFuncionario() {
+    public Usuario getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
+    public void setFuncionario(Usuario funcionario) {
         this.funcionario = funcionario;
     }
 

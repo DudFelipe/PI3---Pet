@@ -8,12 +8,16 @@ package br.senac.tads.pi3a.petshop.Servlets;
 
 
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
+import br.senac.tads.pi3a.petshop.DAO.FilialDAO;
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import br.senac.tads.pi3a.petshop.Modelos.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,6 +62,15 @@ public class ServicoServlet extends HttpServlet {
         s.setDescricao(request.getParameter("descricao"));
         s.setPreco(new BigDecimal(request.getParameter("preco")));
         s.setTamanhoAnimal(Integer.parseInt(request.getParameter("tamanho")));
+        
+        Filial f = new Filial();
+        try {
+            f = FilialDAO.obterFilial(Integer.parseInt(request.getParameter("filial")));
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        s.setFilial(f);
         
         try{
             ServicoBLL.inserir(s);

@@ -3,7 +3,6 @@ package br.senac.tads.pi3a.petshop.Servlets;
 import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.BLL.PetBLL;
 import br.senac.tads.pi3a.petshop.DAO.ClienteDAO;
-import br.senac.tads.pi3a.petshop.DAO.PetDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import br.senac.tads.pi3a.petshop.Modelos.Pet;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class PetsServlet extends HttpServlet {
         List<Pet> pets = null;
         
         try {
-            clientes = ClienteBLL.listar();
+            clientes = ClienteDAO.listar(true);
             pets = PetBLL.listar();
 
         } catch (ClassNotFoundException | SQLException ex) {

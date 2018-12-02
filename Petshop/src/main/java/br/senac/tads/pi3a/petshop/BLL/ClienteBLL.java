@@ -86,7 +86,7 @@ public class ClienteBLL {
     
     //Método listar, responsável por listar todos os clientes cadastrados
     public static List<Cliente> listar() throws SQLException, ClassNotFoundException{
-        return ClienteDAO.listar();
+        return ClienteDAO.listar(false);
     }
     
     //Método obterCliente().
