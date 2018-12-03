@@ -19,13 +19,15 @@
         <jsp:include page="menu.jsp"></jsp:include>
         <div id="content">
             <nav class="navbar navbar-default">
-                    <div style="font-size: 20px; text-align: center;">Gerenciar Pets</div>
-                </nav>
+                <div style="font-size: 20px; text-align: center;">Gerenciar Usuários</div>
+            </nav>
 
-                <div style="margin-bottom: 15px;">
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberacadastro">Cadastro</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Pesquisar</button>
-                </div>
+
+
+            <div style="margin-bottom: 15px;">
+                <button type="button" class="btn btn-secondary btn-lg" id="liberacadastro">Cadastro</button>
+                <button type="button" class="btn btn-secondary btn-lg" id="liberapesquisa">Listar</button>
+            </div>
 
             <div id="cadastro">
                 <form action="
@@ -39,63 +41,59 @@
                           </c:choose>
                           " method="post">
                     <div class="form-row">
+                        
+                        <div class="form-group col-md-4">
+                            <label for="produtos">Dono:</label>
+                            <select id="dono" name="dono" value="${cliente.nome}">
+                                <c:forEach items="${clientes}" var="c">
+                                    <option value="${c.id}"><c:out value="${c.nome}"></c:out></option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        
                         <div class="form-group col-md-6">
                             <label for="produtos">Nome</label>
-                            <input type="text" class="form-control" id="nomepet" value="${pet.nome}" name="nomepet">
+                            <input type="text" class="form-control" id="nomepet" name="nomepet" value="${pet.nome}">
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="calendario">Data de Nascimento</label>
-                            <input type="text" class="form-control" id="calendario" value="${pet.nascimentoStr}" name="nascimento" >
+                            <input type="text" class="form-control" id="calendario" name="nascimento" value="${pet.nascimentoStr}">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="produtos">Especie</label>
-                            <input type="text" class="form-control" id="especie" value="${pet.especie}" name="especie">
+                            <input type="text" class="form-control" id="especie" name="especie" value="${pet.especie}">
                         </div>
 
                         <div class="form-group col-md-6">
                             <label>Tamanho do Animal</label><br>
-                            Pequeno: <input type="radio" class="form-check-input" name="tamanhoanimal" value="1" <c:if test="${pet.porte == '1'}">checked</c:if> > | 
-                            Médio: <input type="radio" class="form-check-input" name="tamanhoanimal" value="2" <c:if test="${pet.porte == '2'}">checked</c:if> > |
-                            Grande: <input type="radio" class="form-check-input" name="tamanhoanimal" value="3" <c:if test="${pet.porte == '3'}">checked</c:if> >
+                            Pequeno: <input type="radio" class="form-check-input" name="tamanhoanimal" value="1" > | 
+                            Médio: <input type="radio" class="form-check-input" name="tamanhoanimal" value="2" > |
+                            Grande: <input type="radio" class="form-check-input" name="tamanhoanimal" value="3" >
                         </div>
-                        
+
                     </div>
-                    <div class="form-row">
-                            <div class="form-group col-md-4">
-                                </div>
-                                <div class="form-group col-md-4">
-                                        <label for="dono">Nome do dono:</label>
-                                        <select name="dono">
-                                            <c:forEach items="${clientes}" var="c">
-                                                <option value="${c.id}" <c:if test="${pet.idCliente.id == c.id}">selected</c:if>><c:out value="${c.nome}"></c:out></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        </div>
-                    </div> 
 
                     <div class="form-row">
-                            <div class="form-group col-md-4">
-                            </div>
-                            <div class="form-group col-md-4 text-center">
-                                <button type="submit" class="btn btn-secondary btn-lg btn-block">Cadastrar</button>
-                            </div>
-                            <div class="form-group col-md-4">
-                            </div>
+                        <div class="form-group col-md-4">
                         </div>
-                        </form>
+                        <div class="form-group col-md-4 text-center">
+                            <button type="submit" class="btn btn-secondary btn-lg btn-block">Cadastrar</button>
+                        </div>
+                        <div class="form-group col-md-4">
+                        </div>
+                    </div>
+                </form>
 
-                    </div> 
+            </div>
 
             <div id="pesquisa" style="display: none">
-                <form>
-                <table class="table" id="tabelaprodutos">
-                  <thead>
+
+                <table class="table" id="tabelaservicos">
+                    <thead>
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Nome Cliente</th>
@@ -114,11 +112,7 @@
                                 <td><c:out value="${p.getIdCliente().getNome()}" /></td>
                                 <td><c:out value="${p.nome}" /></td>
                                 <td><c:out value="${p.especie}" /></td>
-                                <td>
-                                    <c:if test="${p.porte == 1}"> Pequeno</c:if>
-                                    <c:if test="${p.porte == 2}"> Médio</c:if>
-                                    <c:if test="${p.porte == 3}"> Grande</c:if>
-                                </td>
+                                <td><c:out value="${p.porte}" /></td>
                                 <td><c:out value="${p.nascimento}" /></td>
 
                                 <td><a href="${pageContext.request.contextPath}/AlterarPetServlet?id=${p.id}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
@@ -127,50 +121,47 @@
                         </c:forEach>
 
                     </tbody>
-      </table>
-
-
-  </div>
+                </table>
+            </div>
         </div>
-</div>
+
+        <script src="assets/js/jquery-1.12.0.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="assets/js/jquery.dataTables.js"></script>
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="assets/css/jquery-ui.css" />
 
 
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-
-<script type="text/javascript">
-    $(document).ready( function () {
-
-        $('#tabelaprodutos').DataTable( {
-            "language": {
-                "lengthMenu": "Mostrando _MENU_ resultados por página",
-                "zeroRecords": "Nada encontrado - desculpe.",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Não há dados para mostrar",
-                "infoFiltered": "(filtrado no total de _MAX_ resultados)",
-                "search": "Procurar: ",
-                "paginate": {
-                "first":      "Primeiro",
-                "last":       "Último",
-                "next":       "Próximo",
-                "previous":   "Anterior"
-            },
-            }
-        } );
-    } );
-
-    $("#liberacadastro").on("click", function() {
-        $("#cadastro").show();
-        $("#pesquisa").hide();
-    });
-
-    $("#liberapesquisa").on("click", function() {
-        $("#cadastro").hide();
-        $("#pesquisa").show();
-    });
-</script>
-</body>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //$("#calendario").datepicker();
+                $("#calendario").datepicker("option", "dateFormat", "dd/mm/yy");
+                $('#tabelaservicos').DataTable({
+                    "language": {
+                        "lengthMenu": "Mostrando MENU resultados por página",
+                        "zeroRecords": "Nada encontrado - desculpe.",
+                        "info": "Mostrando página PAGE de PAGES",
+                        "infoEmpty": "Não há dados para mostrar",
+                        "infoFiltered": "(filtrado no total de MAX resultados)",
+                        "search": "Procurar: ",
+                        "paginate": {
+                            "first": "Primeiro",
+                            "last": "Último",
+                            "next": "Próximo",
+                            "previous": "Anterior"
+                        },
+                    }
+                });
+            });
+            $("#liberacadastro").on("click", function () {
+                $("#cadastro").show();
+                $("#pesquisa").hide();
+            });
+            $("#liberapesquisa").on("click", function () {
+                $("#cadastro").hide();
+                $("#pesquisa").show();
+            });
+        </script>
+    </body>
 </html>

@@ -105,9 +105,7 @@ public class ProdutoDAO {
     
     public static List<Produto> listar(String filtro) throws SQLException{
         
-        String sql = "SELECT * FROM produto ";
-                if(filtro.length() > 0)
-                {sql = sql +"WHERE " + filtro;}
+        String sql = "SELECT * FROM produto WHERE " + filtro;
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -146,48 +144,4 @@ public class ProdutoDAO {
                 conn.close();
         }
     }
-    
-    public static Produto obterProduto(int id) throws SQLException{
-        
-        String sql = "SELECT * FROM produto WHERE idProduto = ?";
-        
-        Connection conn = null;
-        PreparedStatement pst = null;
-        
-        try{
-            conn = ConnectionUtils.getConnection();
-            pst = conn.prepareStatement(sql);
-            
-            pst.setInt(1, id);
-            
-            ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){ //Caso exista algum registro no ResultSet
-                Produto p = new Produto(); 
-                
-                pst.setString(1, p.getNome());
-                pst.setBigDecimal(2, p.getPreco());
-                pst.setString(3, p.getFabricante());
-                pst.setInt(4, p.getQuantidade());
-                pst.setString(5, p.getModelo());
-                pst.setLong(6, p.getCodBarras());
-            
-            pst.execute(); //Executando a query e realizando a inserção no banco de dados.
-                
-                return p; //Retorna esse cliente depois de armazenar seus dados
-            }
-        }
-        catch(Exception ex){
-            return null;
-        }
-        finally{
-            if(pst != null && !pst.isClosed())
-                pst.close();
-            
-            if(conn != null && !conn.isClosed())
-                conn.close();
-        }
-        return null;
-    }
-    
 }

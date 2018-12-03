@@ -45,12 +45,14 @@ DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL AUTO_INCREMENT,
   `idCliente` int(11) DEFAULT NULL,
+  `idTipoPagamento` int(11) NOT NULL,
   `data` date DEFAULT NULL,
   `precoVenda` double NOT NULL,
   PRIMARY KEY (`idPedido`),
   KEY `idCliente_idx` (`idCliente`),
   KEY `idTipoPagamento_idx` (`idTipoPagamento`),
   CONSTRAINT `idCliente` FOREIGN KEY (`idCliente`) REFERENCES `usuario` (`idusuario`),
+  CONSTRAINT `idTipoPagamento` FOREIGN KEY (`idTipoPagamento`) REFERENCES `tipopagamento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

@@ -5,7 +5,6 @@
  */
 package br.senac.tads.pi3a.petshop.Servlets;
 
-import br.senac.tads.pi3a.petshop.BLL.ClienteBLL;
 import br.senac.tads.pi3a.petshop.BLL.ProdutoBLL;
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
 import br.senac.tads.pi3a.petshop.DAO.ClienteDAO;

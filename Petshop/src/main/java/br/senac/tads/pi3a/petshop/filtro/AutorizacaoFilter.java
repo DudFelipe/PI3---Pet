@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter(filterName = "AutorizacaoFilter", servletNames = { "ClienteServlet_aa" }, 
+@WebFilter(filterName = "AutorizacaoFilter", servletNames = { "ClienteServlet" }, 
         urlPatterns = { "/protegido/*" })
 public class AutorizacaoFilter implements Filter {
 

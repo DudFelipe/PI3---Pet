@@ -6,7 +6,6 @@ import br.senac.tads.pi3a.petshop.DAO.ClienteDAO;
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import br.senac.tads.pi3a.petshop.Modelos.Pet;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -30,7 +29,8 @@ public class PetsServlet extends HttpServlet {
             clientes = ClienteDAO.listar(true);
             pets = PetBLL.listar();
 
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         request.setAttribute("clientes", clientes);
@@ -60,12 +60,11 @@ public class PetsServlet extends HttpServlet {
             p.setNascimento(sdf.parse(request.getParameter("nascimento")));
             
             p.setEspecie(request.getParameter("especie"));
-            p.setPorte(request.getParameter("tamanhoanimal"));
+            p.setPorte("tamanhoanimal");
             
             listaPets = PetBLL.listar();
             listaClientes = ClienteBLL.listar();
             
-            System.out.println(" " + p.getNome() + " | " + p.getNascimentoStr() + " | " + p.getEspecie() + " | " + p.getPorte());
             PetBLL.inserir(p);
             
         } catch (Exception ex) {
@@ -75,6 +74,7 @@ public class PetsServlet extends HttpServlet {
         request.setAttribute("pets", listaPets);
         request.setAttribute("clientes", listaClientes);
         
-        response.sendRedirect(request.getContextPath() + "/PetsServlet");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pets.jsp");
+        dispatcher.forward(request, response);
     }
 }

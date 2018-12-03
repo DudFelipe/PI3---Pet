@@ -14,12 +14,9 @@
 
 <body>
 <script type="text/javascript">
-
- function excluir(elemento) {
-    console.log(elemento);
-    $(elemento).closest('tr').remove();
-}
-
+ function excluir() {
+            $(this).parents('tr').remove();
+        }
 </script>
 
 
@@ -109,18 +106,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</th>
-                                    <td>Coleira</td>
+                                    <td scope="row">203</td>
+                                    <td>Bolsa</td>
                                     <td>10</td>
-                                    <td>R$10,00</td>
-                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
-                                </tr>
-                                <tr>
-                                    <td>2</th>
-                                    <td>Banho</td>
-                                    <td>999</td>
-                                    <td>R$45,00</td>
-                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
+                                    <td>R$14,00</td>
+                                    <td><span id="adicionarproduto" idproduto="203" class="glyphicon glyphicon-menu-right"
+                                            aria-hidden="true"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -130,9 +121,7 @@
                 <div class="col-md-4">
                     <nav class="navbar navbar-default">
                         <div style="font-size: 10px; text-align: center;">
-                            <select name="clientes" style="width: 100%">
-                                <option>Selecione um cliente</option>
-                            </select>
+                            <input type="text" name="" id="" style="height:28px !important; width: 90%;" placeholder="Pesquisar Cliente">
 
                     </nav>
                     <div class="navbar" style="height:150px; overflow: auto;">
@@ -141,18 +130,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1</th>
-                                    <td>Coleira</td>
+                                    <td scope="row">203</th>
+                                    <td>Bolsa</td>
                                     <td>10</td>
                                     <td>R$14,00</td>
-                                    <td><span id="testeXX" class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this);"></span></td>
+                                    <td><span onClick="excluir(this)" class="glyphicon glyphicon-remove"
+                                            aria-hidden="true">
+
+                                        </span></td>
                                 </tr>
-           
                             </tbody>
                         </table>
                     </div>
                     <div class="navbar">
-                        Valor total <h4 id="valortotal">R$0</h4>
+                        Valor total <h4>R$ 20,00</h4>
                     </div>
 
                     <div class="navbar">
@@ -177,14 +168,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
     <script type="text/javascript">
-        var produtos_selecionados = [];
-        var valor_total = 0;
-
         $(document).ready(function () {
-
-            var produtos_disponiveis = [];
-            var produtos_selecionados = [];
-
             $('#tabelaitens').DataTable({
 
                 "language": {
@@ -202,17 +186,16 @@
                     },
                 }
             });
-            $(".adicionarproduto").on("click", function () {
+            $("#adicionarproduto").on("click", function () {
 
                 var qtd = prompt("Digite a quantidade:");
                 if (qtd != null) {
-
                     $('#tabelacarrinho').append('<tr>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(0).text() + '</td>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(1).text() + '</td>' +
-                        '<td>' + qtd + '</td>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
-                        '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this)"></span></td>' +
+                        '<td>203</td>' +
+                        ' <td>Bolsa</td>' +
+                        '<td>10</td>' +
+                        '<td>R$14,00</td>' +
+                        '<td><span onClick="excluir(this)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>' +
                         '</tr>');
                 }
             });
@@ -276,9 +259,6 @@
                     console.log(produtos_selecionados);
                 }
             });
-            
-            
->>>>>>> Diogo
         });
 
         function excluir(elemento, idproduto) {

@@ -71,7 +71,7 @@ public class AlterarPetServlet extends HttpServlet {
             p.setNascimento(sdf.parse(request.getParameter("nascimento")));
             
             p.setEspecie(request.getParameter("especie"));
-            p.setPorte(request.getParameter("tamanhoanimal"));
+            p.setPorte("tamanhoanimal");
             
             PetBLL.alterar(p);
             
@@ -86,7 +86,8 @@ public class AlterarPetServlet extends HttpServlet {
         request.setAttribute("pets", listaPets);
         request.setAttribute("clientes", listaClientes);
         
-        response.sendRedirect(request.getContextPath() + "/PetsServlet");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/pets.jsp");
+        dispatcher.forward(request, response);
         
     }
 }
