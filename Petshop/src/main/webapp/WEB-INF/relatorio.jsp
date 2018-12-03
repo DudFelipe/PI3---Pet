@@ -45,9 +45,9 @@
                         <div class="form-group col-md-2">
 
                             <label for="inputState">Período:</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Selecione...</option>
-                                <option value="RelatoriosServlet?filtro=7">Semanal</option>
+                            <select id="inputState" class="form-control" onChange="window.location.href=this.options[this.selectedIndex].value">
+                                <option>Selecione...</option>
+                                <option value="RelatoriosServlet?filtro=7" selected>Semanal</option>
                                 <option value="RelatoriosServlet?filtro=15">Quinzenal</option>
                                 <option value="RelatoriosServlet?filtro=30">Mensal</option>
                             </select>
@@ -115,7 +115,7 @@
                     <div class="form-group col-md-2">
                         <div class="row">
                             <label for="inputState">Tipo de relatorio:</label>
-                            <select id="inputState" class="form-control" onChange="window.location.href=this.options[this.selectedIndex].value>
+                            <select id="inputState" class="form-control" onChange="window.location.href=this.options[this.selectedIndex].value">
                                 <option value="0" selected="">Semanal</option>
                                 <option value="1">Quinzenal</option>
                                 <option value="2">Mensal</option>
@@ -149,11 +149,11 @@
 
             $('#tabelaVendas').DataTable({
                 "language": {
-                    "lengthMenu": "Mostrando _MENU_ resultados por página",
+                    "lengthMenu": "Mostrando MENU resultados por página",
                     "zeroRecords": "Nada encontrado - desculpe.",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "info": "Mostrando página PAGE de PAGES",
                     "infoEmpty": "Não há dados para mostrar",
-                    "infoFiltered": "(filtrado no total de _MAX_ resultados)",
+                    "infoFiltered": "(filtrado no total de MAX resultados)",
                     "search": "Procurar: ",
                     "paginate": {
                         "first": "Primeiro",
@@ -188,4 +188,3 @@
     </script>
 </body>
 </html>
-
