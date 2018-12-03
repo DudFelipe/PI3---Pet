@@ -1,5 +1,6 @@
 package br.senac.tads.pi3a.petshop.filtro;
 
+import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -36,12 +37,34 @@ public class AutorizacaoFilter implements Filter {
         
         chain.doFilter(request, response);
         // Verifica se o usuário possui o papel para acessar funcionalidade.
-        //Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+        Cliente usuario = (Cliente) sessao.getAttribute("usuario");
         
+        if (verificarAcesso(usuario, httpRequest, httpResponse)) {
+            // Requisicao pode seguir para o Servlet
+            chain.doFilter(request, response);
+        } else {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/erro-nao-autorizado.jsp");
+        }
 
     }
 
-
+    private boolean verificarAcesso(Cliente usuario, 
+            HttpServletRequest request,
+            HttpServletResponse response) {
+        String pagina = request.getRequestURI();
+        
+        //if (pagina.endsWith("/home")) {
+        //    return true;
+        //} else if (pagina.endsWith("/peao-page") && usuario.verificarPapel("PEAO")) {
+        //    return true;
+        //} else if (pagina.endsWith("/fodon-page") && usuario.verificarPapel("FODON")) {
+        //    return true;
+        //}  else if (pagina.endsWith("/god-page") && usuario.verificarPapel("GOD")) {
+        //    return true;
+        //}
+        return false;
+    }
+    
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
