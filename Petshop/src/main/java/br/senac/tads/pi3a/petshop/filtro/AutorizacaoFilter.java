@@ -1,10 +1,12 @@
 package br.senac.tads.pi3a.petshop.filtro;
 
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
+import br.senac.tads.pi3a.petshop.Modelos.Usuario;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -39,7 +41,7 @@ public class AutorizacaoFilter implements Filter {
         // Verifica se o usuário possui o papel para acessar funcionalidade.
         Cliente usuario = (Cliente) sessao.getAttribute("usuario");
         
-        if (verificarAcesso(usuario, httpRequest, httpResponse)) {
+        if (redirecionaLogin(usuario, httpRequest, httpResponse)) {
             // Requisicao pode seguir para o Servlet
             chain.doFilter(request, response);
         } else {
@@ -48,21 +50,39 @@ public class AutorizacaoFilter implements Filter {
 
     }
 
-    private boolean verificarAcesso(Cliente usuario, 
+    private boolean redirecionaLogin(Cliente usuario, 
             HttpServletRequest request,
-            HttpServletResponse response) {
+            HttpServletResponse response)throws ServletException, IOException {
         String pagina = request.getRequestURI();
         
-        //if (pagina.endsWith("/vendas")) {
-         //   return true;
-        //} else if (pagina.endsWith("/") && usuario.("Funcionario")) {
-          //  return true;
-       // } else if (pagina.endsWith("/") && usuario.("GerenteFilial")) {
-        //    return true;
-        //}  else if (pagina.endsWith("/") && usuario.("GerenteGeral")) {
-           // return true;
-        //}
+        //Se usuario tipo RH, redireciona
+        if(usuario.getTipoAcesso()==7){
+            RequestDispatcher dispatcher
+            = request.getRequestDispatcher(
+                        "/WEB-INF/jsp/cliente.jsp");
+        dispatcher.forward(request, response);
+        }
+        
+        //Se usuario tipo Cliente ou Funcionario Filial
+        if(usuario.getTipoAcesso()== 1 || usuario.getTipoAcesso()==2){
+           RequestDispatcher dispatcher
+            = request.getRequestDispatcher(
+                        "/WEB-INF/jsp/vendas.jsp");
+        dispatcher.forward(request, response); 
+        }
+        
+        //Se usuario tipo TI ou Gerente Geral oou Gerente Filial
+        if(usuario.getTipoAcesso()==5 || usuario.getTipoAcesso()==4
+                || usuario.getTipoAcesso()==3){
+            RequestDispatcher dispatcher
+            = request.getRequestDispatcher(
+                        "/WEB-INF/jsp/relatorio.jsp");
+        dispatcher.forward(request, response);
+        }
+        
+        
         return false;
+        
     }
     
     @Override

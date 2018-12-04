@@ -95,8 +95,7 @@
                     <c:when test="${sessionScope.usuario.getTipoAcesso() == 2 ||
                                   sessionScope.usuario.getTipoAcesso() == 4 ||
                           sessionScope.usuario.getTipoAcesso() == 5||
-                          sessionScope.usuario.getTipoAcesso() == 6||
-                          sessionScope.usuario.getTipoAcesso() == 7  }">
+                          sessionScope.usuario.getTipoAcesso() == 6  }">
                     
                     <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("cliente.jsp")){%> class="active" <%}%> >
                         <a href="ClienteServlet">
@@ -121,8 +120,7 @@
                     <c:choose>
                     <c:when test="${sessionScope.usuario.getTipoAcesso() == 2 ||
                                   sessionScope.usuario.getTipoAcesso() == 4 ||
-                          sessionScope.usuario.getTipoAcesso() == 5||
-                          sessionScope.usuario.getTipoAcesso() == 6 }">
+                          sessionScope.usuario.getTipoAcesso() == 5 }">
                     <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("pets.jsp")){%> class="active" <%}%> >
                         <a href="PetsServlet">
                             <i class="glyphicon glyphicon-star"></i>
