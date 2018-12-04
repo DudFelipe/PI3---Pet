@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-=======
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
->>>>>>> Marcos
+
 package br.senac.tads.pi3a.petshop.Servlets;
 
 import br.senac.tads.pi3a.petshop.BLL.ProdutoBLL;
@@ -17,15 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
 
-=======
 /**
  *
  * @author Marcos
  */
 @WebServlet(name = "AlterarProdutoServlet", urlPatterns = {"/AlterarProdutoServlet"})
->>>>>>> Marcos
+
 public class AlterarProdutoServlet extends HttpServlet {
 
     /**
@@ -47,7 +44,7 @@ public class AlterarProdutoServlet extends HttpServlet {
        List<Produto> produtos = null;
        
        try{
-<<<<<<< HEAD
+
            p = ProdutoBLL.ObterProduto(id);
            produtos = ProdutoBLL.listar();
        }
@@ -66,7 +63,7 @@ public class AlterarProdutoServlet extends HttpServlet {
     } 
 
 }
-=======
+
            p = ProdutoBLL.obterProduto(id);
            produtos = ProdutoBLL.listar("");
        }
