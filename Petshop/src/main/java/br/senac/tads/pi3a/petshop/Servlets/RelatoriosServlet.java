@@ -28,11 +28,15 @@ import javax.servlet.http.HttpServletResponse;
 public class RelatoriosServlet extends HttpServlet {
 
 
-    @Override
+     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int filtro = Integer.parseInt(request.getAttribute("filtro").toString());
+        int filtro = 7;
+        if(request.getParameter("filtro") != null) {
+            filtro = Integer.parseInt(request.getParameter("filtro").toString());
+        }
+
         
           List<Relatorio> relatorio = null; 
         try{

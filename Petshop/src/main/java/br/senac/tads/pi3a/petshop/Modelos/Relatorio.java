@@ -14,8 +14,8 @@ import java.util.Date;
 public class Relatorio {
     
     private int idPedido;
-    private int idCliente;
-    private int idFuncionario;
+    private Cliente cliente;
+    private Funcionario funcionario;
     private int idTipoPagamento;
     private int idFilial;
     private Date data;
@@ -29,20 +29,20 @@ public class Relatorio {
         this.idPedido = idPedido;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
     public int getIdTipoPagamento() {

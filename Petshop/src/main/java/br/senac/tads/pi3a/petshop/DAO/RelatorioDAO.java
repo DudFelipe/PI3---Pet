@@ -6,6 +6,7 @@
 package br.senac.tads.pi3a.petshop.DAO;
 
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
+import br.senac.tads.pi3a.petshop.Modelos.Funcionario;
 import br.senac.tads.pi3a.petshop.Modelos.Pet;
 import br.senac.tads.pi3a.petshop.Modelos.Relatorio;
 import br.senac.tads.pi3a.petshop.Utils.ConnectionUtils;
@@ -44,8 +45,14 @@ public class RelatorioDAO {
                 
                 r.setIdPedido(rs.getInt("idPedido"));
                 
-                r.setIdCliente(rs.getInt("idCliente"));
-                r.setIdFuncionario(rs.getInt("idFuncionario"));
+                int idCliente = rs.getInt("idCliente");
+                int idFuncionario = rs.getInt("idFuncionario");
+                
+                Cliente c = ClienteDAO.obterCliente(idCliente);
+                Funcionario f = ClienteDAO.obterFuncionario(idFuncionario);
+                
+                r.setCliente(c);
+                r.setFuncionario(f);
                 r.setIdTipoPagamento(rs.getInt("idTipoPagamento"));
                 r.setIdFilial(rs.getInt("idFilial"));
                 r.setData(rs.getDate("data"));

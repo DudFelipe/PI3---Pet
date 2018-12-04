@@ -7,6 +7,7 @@ package br.senac.tads.pi3a.petshop.DAO;
 
 import br.senac.tads.pi3a.petshop.Modelos.Cliente;
 import br.senac.tads.pi3a.petshop.Modelos.Filial;
+import br.senac.tads.pi3a.petshop.Modelos.Funcionario;
 import br.senac.tads.pi3a.petshop.Utils.ConnectionUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -203,7 +204,7 @@ public class ClienteDAO {
     //Responsável por retornar os dados de um cliente específico
     public static Cliente obterCliente(int id) throws SQLException{
         //Comando SELECT responsável por selecionar os dados de um determinado cliente filtrado pelo seu ID
-        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ? and tipoAcesso = 1";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -237,7 +238,59 @@ public class ClienteDAO {
                 
                 c.setFilial(f);
                 
+                System.out.println("CLIENTE: " + c.getNome());
+                
                 return c; //Retorna esse cliente depois de armazenar seus dados
+            }
+        }
+        catch(Exception ex){
+            return null;
+        }
+        finally{
+            if(pst != null && !pst.isClosed())
+                pst.close();
+            
+            if(conn != null && !conn.isClosed())
+                conn.close();
+        }
+        return null;
+    }
+    
+    public static Funcionario obterFuncionario(int id) throws SQLException{
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ? AND tipoAcesso = 2";
+        
+        Connection conn = null;
+        PreparedStatement pst = null;
+        
+        try{
+            conn = ConnectionUtils.getConnection();
+            pst = conn.prepareStatement(sql);
+            
+            pst.setInt(1, id);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                Funcionario f = new Funcionario();
+                
+                f.setId(rs.getInt("idUsuario"));
+                f.setNome(rs.getString("Nome"));
+                f.setDtNascimento(rs.getDate("nascimento"));
+                f.setCpf(rs.getString("CPF"));
+                f.setRg(rs.getString("RG"));
+                f.setTelefone(rs.getString("telefone"));
+                f.setEmail(rs.getString("email"));
+                f.setSexo(rs.getString("sexo").charAt(0));
+                f.setEndereco(rs.getString("endereco"));
+                f.setSenha(rs.getString("senha"));
+                f.setTipoAcesso(rs.getInt("tipoacesso"));
+                
+                Filial fi = new Filial();
+                fi = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                
+                f.setFilial(fi);
+                
+                return f;
             }
         }
         catch(Exception ex){

@@ -30,9 +30,9 @@ public class VendaBLL {
         VendaDAO.inserir(v);
     }
 
-    public static List<Venda> listar(String filtro) throws SQLException, ClassNotFoundException {
-        return VendaDAO.listar(filtro);
-    }
+//    public static List<Venda> listar(String filtro) throws SQLException, ClassNotFoundException {
+//        return VendaDAO.listar(filtro);
+//    }
 
     public static Venda obterVenda(int id) throws SQLException {
         return VendaDAO.obterVenda(id);
