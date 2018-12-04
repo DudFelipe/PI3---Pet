@@ -14,20 +14,26 @@ import java.math.BigDecimal;
  */
 public class Venda {
     private Cliente cliente;
-    private Pet pet;
-    private Funcionario funcionario;
+    private Usuario funcionario;
     private List<Produto> produtos;
     private List<Servico> servicos;
-    private BigDecimal valorTotal;
-    private boolean fechada;
+    private Float valorTotal;
+
 
     public Venda() {
         
     }
+
+    public Float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
     
     public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, Funcionario funcionario) {
         this.cliente = cliente;
-        this.pet = pet;
         this.produtos = produtos;
         this.servicos = servicos;
         this.funcionario = funcionario;
@@ -41,14 +47,6 @@ public class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }  
-
-    public Pet getPet() {
-        return this.pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }    
 
     public List<Produto> getProdutos() {
         return this.produtos;
@@ -74,11 +72,4 @@ public class Venda {
         //this.funcionario = funcionario;
     }
     
-    public void calculaTotal(){
-        
-    }
-    
-    public int registraConta(){
-        return 0;
-    }
 }
