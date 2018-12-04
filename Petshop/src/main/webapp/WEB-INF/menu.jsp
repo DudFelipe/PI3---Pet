@@ -58,7 +58,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="LogoutServlet">
                             <i class="glyphicon glyphicon-off"></i>
                             Sair
                         </a>
