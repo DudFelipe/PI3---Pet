@@ -53,14 +53,14 @@ public class AutorizacaoFilter implements Filter {
             HttpServletResponse response) {
         String pagina = request.getRequestURI();
         
-        //if (pagina.endsWith("/home")) {
+        //if (pagina.endsWith("/vendas")) {
+         //   return true;
+        //} else if (pagina.endsWith("/") && usuario.("Funcionario")) {
+          //  return true;
+       // } else if (pagina.endsWith("/") && usuario.("GerenteFilial")) {
         //    return true;
-        //} else if (pagina.endsWith("/peao-page") && usuario.verificarPapel("PEAO")) {
-        //    return true;
-        //} else if (pagina.endsWith("/fodon-page") && usuario.verificarPapel("FODON")) {
-        //    return true;
-        //}  else if (pagina.endsWith("/god-page") && usuario.verificarPapel("GOD")) {
-        //    return true;
+        //}  else if (pagina.endsWith("/") && usuario.("GerenteGeral")) {
+           // return true;
         //}
         return false;
     }

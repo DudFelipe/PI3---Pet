@@ -7,6 +7,7 @@ package br.senac.tads.pi3a.petshop.Modelos;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,7 @@ public abstract class Usuario {
     private String endereco;
     private String senha;
     private Filial filial;
+    
     
     /**
      * tipoAcesso = 1 -> Acesso de Cliente
