@@ -1,10 +1,9 @@
 <%-- 
     Document   : vendas
-    Created on : 31/10/2018, 20:51:28
+    Created on : 24/11/2018, 16:54:40
     Author     : vyvis
 --%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,95 +13,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>PetShop TADES - Vendas</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+   
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-<script type="text/javascript">
 
- function excluir(elemento) {
-    console.log(elemento);
-    $(elemento).closest('tr').remove();
-}
-
-</script>
 
 
     <div class="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="logo.png">
-                <strong></strong>
-            </div>
-
-            <ul class="list-unstyled components">
-                <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                <li class="active">
-                    <a href="vendas.html">
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                        Vendas
-                    </a>
-                </li>
-
-                <li>
-                    <a href="produtos.html">
-                        <i class="glyphicon glyphicon-list-alt"></i>
-                        Produtos
-                    </a>
-                </li>
-
-                <li>
-                    <a href="servicos.html">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Serviços
-                    </a>
-
-                </li>
-                <li>
-                    <a href="pets.html">
-                        <i class="fas fa-paw">
-                        </i>
-                        Pets
-                    </a>
-                </li>
-
-                <li>
-                    <a href="clientes.html">
-                        <i class="glyphicon glyphicon-user"></i>
-                        Clientes
-                    </a>
-                </li>
-
-                <li>
-                    <a href="relatorio.html">
-                        <i class="glyphicon glyphicon-stats"></i>
-                        Relatórios
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="glyphicon glyphicon-log-out"></i>
-                        Sair
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div style="width: 600px; height: 263px; position: absolute; background-color: black; 
-                 top: 50%; left: 50%; margin-top: -131px; margin-left: -300px; z-index: 99; display: none;">
-
-
-        </div>
-
+        <jsp:include page="menu.jsp"></jsp:include>
         <div id="content">
             <div class="row">
                 <div class="col-md-8">
                     <nav class="navbar navbar-default">
-                        <div style="font-size: 20px; text-align: center;">Nome do Cliente</div>
+                        <div style="font-size: 20px; text-align: center;" id="clienteselecionado">Selecione um Cliente</div>
                     </nav>
                     <div class="navbar">
                         <table class="table" id="tabelaitens">
@@ -110,33 +36,28 @@
                                 <tr>
                                     <th>Cod.</th>
                                     <th>Nome</th>
-                                    <th>Qtd</th>
-                                    <th>Tamanho do animal</th>    
+                                    <th>Quantidade</th>
                                     <th>Valor</th>
+                                    <th>Tipo</th>
                                     <th>Adicionar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:forEach items="${servicos}" var="s">
-                                <tr>
-                                    <td><c:out value="${s.id}" /></th>
-                                    <td><c:out value="${s.descricao}" /></td>
-                                    <td>-</td>
-                                    <td><c:out value="${s.tamanhoAnimal}" /></td>
-                                    <td><c:out value="${s.preco}" /></td>
-                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
-                                </tr>
+                                   <tr>
+                                       <td>${s.id}</td>
+                                        <td>${s.descricao} (
+                                            <c:if test="${s.tamanhoAnimal == 1}">Pequeno</c:if>
+                                            <c:if test="${s.tamanhoAnimal == 2}">Médio</c:if>
+                                            <c:if test="${s.tamanhoAnimal == 3}">Grande</c:if>
+                                            )</td>
+                                        <td>100</td>
+                                        <td>R$${s.preco}</td>
+                                        <td>Serviço</td>
+                                        <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-plus" aria-hidden="true"></span></td>
+                                    </tr> 
                                 </c:forEach>
-                                <c:forEach items="${produtos}" var="p">
-                                    <tr>
-                                    <td><c:out value="${p.id}" /></th>
-                                    <td><c:out value="${p.nome}" /></td>
-                                    <td><c:out value="${p.quantidade}" /></td>
-                                    <td>-</td>
-                                    <td><c:out value="${p.preco}" /></td>
-                                    <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-menu-right" aria-hidden="true"></span></td>
-                                    </tr>
-                                </c:forEach>
+
                             </tbody>
                         </table>
                     </div>
@@ -145,10 +66,10 @@
                 <div class="col-md-4">
                     <nav class="navbar navbar-default">
                         <div style="font-size: 10px; text-align: center;">
-                            <select name="clientes" style="width: 100%">
+                            <select id="listaclientes" name="clientes" style="width: 100%; height: 28px;">
                                 <option>Selecione um cliente</option>
                                 <c:forEach items="${clientes}" var="c">
-                                    <option><c:out value="${c.nome}" /></option>
+                                   <option value="${c.id}">${c.nome}</option>
                                 </c:forEach>
                             </select>
 
@@ -158,13 +79,6 @@
                             <thead>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</th>
-                                    <td>Coleira</td>
-                                    <td>10</td>
-                                    <td>R$14,00</td>
-                                    <td><span id="testeXX" class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this);"></span></td>
-                                </tr>
            
                             </tbody>
                         </table>
@@ -174,7 +88,7 @@
                     </div>
 
                     <div class="navbar">
-                        <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%">
+                        <button type="button" class="btn btn-secondary btn-lg" id="finalizarvenda" style="width: 100%">
                             Finalizar venda</button>
                         <br><br>
                         <button type="button" class="btn btn-secondary btn-lg" id="exportarcadastros" style="width: 100%">
@@ -195,14 +109,18 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
     <script type="text/javascript">
-        var produtos_selecionados = [];
+        var produtos_selecionados = {};
+        produtos_selecionados["venda"] = [];
         var valor_total = 0;
+        var cliente_selecionado = 0;
 
         $(document).ready(function () {
-
-            var produtos_disponiveis = [];
-            var produtos_selecionados = [];
-
+            
+            $('#listaclientes').on('change', function() {
+                $('#clienteselecionado').html($(this).find("option:selected").text());
+                cliente_selecionado = $(this).val();
+             });
+              
             $('#tabelaitens').DataTable({
 
                 "language": {
@@ -220,36 +138,125 @@
                     },
                 }
             });
-            $(".adicionarproduto").on("click", function () {
-
-                var qtd = prompt("Digite a quantidade:");
-                if (qtd != null) {
-
-                    $('#tabelacarrinho').append('<tr>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(0).text() + '</td>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(1).text() + '</td>' +
-                        '<td>' + qtd + '</td>' +
-                        '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
-                        '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this)"></span></td>' +
-                        '</tr>');
+            
+            $("#finalizarvenda").on("click", function () {
+                
+                if(cliente_selecionado == 0) {
+                    alert("Selecione um cliente!");
+                    return;
+                }
+                
+                if(produtos_selecionados["venda"].length == 0) {
+                    alert("Selecione pelo menos um produto/serviço!");
+                    return;
+                }
+                
+                $.ajax({
+                 type: "POST",
+                 url: "VendaServlet",
+                 data: {
+                    cliente: cliente_selecionado,
+                    produtos: JSON.stringify(produtos_selecionados),
+                    valor_venda: valor_total
+                },
+                 success: function(data){
+                  alert('Compra cadastrada com sucesso!');
+                  location.href = 'VendaServlet';
                 }
             });
 
+            });
+            
+            $(".adicionarproduto").on("click", function () {
+
+                var novo_produto = true;
+                var qtd = parseInt(prompt("Digite a quantidade:"));
+                if (qtd != null && qtd > 0) {
+
+                    if( parseInt($(this).closest('tr').find('td').eq(2).text()) < qtd ) {
+                        alert("Estoque insuficiente deste produto");
+                        return;
+                    }
+
+                    $(this).closest('tr').find('td').eq(2).text( parseInt($(this).closest('tr').find('td').eq(2).text()) - qtd);
+
+                    for (var i = 0; i < produtos_selecionados["venda"].length; i++) {
+                        if(produtos_selecionados["venda"][i].id == $(this).closest('tr').find('td').eq(0).text()) {
+                            produtos_selecionados["venda"][i].qtd += qtd;
+                            novo_produto = false;
+                        }
+                    }
+
+
+                    if(novo_produto) {
+                        $('#tabelacarrinho').append('<tr>' +
+                            '<td>' + $(this).closest('tr').find('td').eq(0).text() + '</td>' +
+                            '<td>' + $(this).closest('tr').find('td').eq(1).text() + '</td>' +
+                            '<td>' + qtd + '</td>' +
+                            '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
+                            '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this, ' +  $(this).closest('tr').find('td').eq(0).text() + ')" id="aka"></span></td>' +
+                            '</tr>');
+
+                        produtos_selecionados["venda"].push({
+                            id: $(this).closest('tr').find('td').eq(0).text(),
+                            nome: $(this).closest('tr').find('td').eq(1).text().split(" ")[0],
+                            valorunitario: parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")),
+                            tipo: $(this).closest('tr').find('td').eq(4).text(),
+                            qtd: qtd
+                        });
+                    } else {
+                        var tabela = document.getElementById('tabelacarrinho');
+                        var linhas = tabela.rows.length;
+
+                        for(var i=0; i < linhas; i++){
+                          var row = tabela.rows[i];
+
+                          if (row.cells[0].innerHTML == $(this).closest('tr').find('td').eq(0).text()) { //se for o item que estou procurando
+                                row.cells[2].innerHTML = parseInt(row.cells[2].innerHTML) + qtd;
+                          }
+
+                        }
+                    }
+
+                    valor_total += parseInt( parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")) * qtd );
+
+                    
+
+                    $("#valortotal").text("R$" + valor_total);
+                    produtos_selecionados.valortotal = valor_total;
+
+                    console.log(produtos_selecionados);
+                }
+            });
+            
+            
         });
 
         function excluir(elemento, idproduto) {
-            $(elemento).closest('tr').remove();
-            valor_total = 0;
-            for( var i = 0; i < produtos_selecionados.length; i++){ 
-               if ( produtos_selecionados[i].id == idproduto) {
-                 produtos_selecionados.splice(i, 1);
+            var id_produto = $(elemento).closest('tr').find('td').eq(0).text(); //pega o id do produto que esta sendo deletado
+            var quantidade_produto = $(elemento).closest('tr').find('td').eq(2).text(); //qtd do produto que foi adicionado (para repor o estoque)
+
+            for(var count = 1; $('#tabelaitens').find('tr').eq(count).text() != ""; count++) { //for na lista de produtos disponíveis
+                if( $('#tabelaitens').find('tr').eq(count).find('td').eq(0).text() == id_produto) { //se achou o produto que estamos deletando, vamos repor o estoque
+                    $('#tabelaitens').find('tr').eq(count).find('td').eq(2).text(parseInt($('#tabelaitens').find('tr').eq(count).find('td').eq(2).text()) + parseInt(quantidade_produto));
+                }
+            }
+
+            $(elemento).closest('tr').remove(); //deleta a linha na tabela do carrinho
+
+            
+            for( var i = 0; i < produtos_selecionados["venda"].length; i++){ //começa a tratativa para remover do array que será enviado via json
+               if ( produtos_selecionados["venda"][i].id == idproduto) {
+                 produtos_selecionados["venda"].splice(i, 1); //remove do array
                } 
             }
 
-            for( var i = 0; i < produtos_selecionados.length; i++){
-               valor_total += produtos_selecionados[i].valorunitario * produtos_selecionados[i].qtd;
+            valor_total = 0; 
+            for( var i = 0; i < produtos_selecionados["venda"].length; i++){ //reconta o valor total do carrinho
+               valor_total += produtos_selecionados["venda"][i].valorunitario * produtos_selecionados["venda"][i].qtd;
             }
 
+            produtos_selecionados.valortotal = valor_total;
             $("#valortotal").text("R$" + valor_total);
         }
 

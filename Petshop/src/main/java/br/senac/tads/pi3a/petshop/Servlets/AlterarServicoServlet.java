@@ -6,6 +6,8 @@
 package br.senac.tads.pi3a.petshop.Servlets;
 
 import br.senac.tads.pi3a.petshop.BLL.ServicoBLL;
+import br.senac.tads.pi3a.petshop.DAO.FilialDAO;
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import br.senac.tads.pi3a.petshop.Modelos.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -74,20 +76,14 @@ public class AlterarServicoServlet extends HttpServlet {
             s.setPreco(new BigDecimal(request.getParameter("preco")));
             s.setTamanhoAnimal(Integer.parseInt(request.getParameter("tamanho")));
             
+            Filial f = new Filial();
+            f = FilialDAO.obterFilial(Integer.parseInt(request.getParameter("filial")));
+            
+            s.setFilial(f);
+            
             ServicoBLL.alterar(s);
-            
-            List<Servico> servicos = null;
-            try{
-                servicos = ServicoBLL.listar();
-            }
-            catch(ClassNotFoundException | SQLException ex){
-                ex.printStackTrace();
-            }
 
-        request.setAttribute("servicos", servicos);
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/servicos.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/ServicoServlet");
         }
         catch(Exception ex){
             ex.printStackTrace();

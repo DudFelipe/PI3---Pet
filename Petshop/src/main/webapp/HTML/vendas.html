@@ -231,6 +231,7 @@
 
                     for (var i = 0; i < produtos_selecionados.length; i++) {
                         if(produtos_selecionados[i].id == $(this).closest('tr').find('td').eq(0).text()) {
+                            produtos_selecionados[i].qtd += qtd;
                             novo_produto = false;
                         }
                     }
@@ -244,6 +245,13 @@
                             '<td>' + $(this).closest('tr').find('td').eq(3).text() + '</td>' +
                             '<td><span class="glyphicon glyphicon-remove" aria-hidden="true" onClick="excluir(this, ' +  $(this).closest('tr').find('td').eq(0).text() + ')" id="aka"></span></td>' +
                             '</tr>');
+
+                        produtos_selecionados.push({
+                            id: $(this).closest('tr').find('td').eq(0).text(),
+                            nome: $(this).closest('tr').find('td').eq(1).text(),
+                            valorunitario: parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")),
+                            qtd: qtd
+                        });
                     } else {
                         var tabela = document.getElementById('tabelacarrinho');
                         var linhas = tabela.rows.length;
@@ -260,14 +268,10 @@
 
                     valor_total += parseInt( parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")) * qtd );
 
-                    produtos_selecionados.push({
-                        id: $(this).closest('tr').find('td').eq(0).text(),
-                        nome: $(this).closest('tr').find('td').eq(1).text(),
-                        valorunitario: parseInt($(this).closest('tr').find('td').eq(3).text().replace("R$", "")),
-                        qtd: qtd
-                    });
+                    
 
                     $("#valortotal").text("R$" + valor_total);
+                    produtos_selecionados.valortotal = valor_total;
 
                     console.log(produtos_selecionados);
                 }
@@ -278,18 +282,30 @@
         });
 
         function excluir(elemento, idproduto) {
-            $(elemento).closest('tr').remove();
-            valor_total = 0;
-            for( var i = 0; i < produtos_selecionados.length; i++){ 
+            var id_produto = $(elemento).closest('tr').find('td').eq(0).text(); //pega o id do produto que esta sendo deletado
+            var quantidade_produto = $(elemento).closest('tr').find('td').eq(2).text(); //qtd do produto que foi adicionado (para repor o estoque)
+
+            for(var count = 1; $('#tabelaitens').find('tr').eq(count).text() != ""; count++) { //for na lista de produtos disponíveis
+                if( $('#tabelaitens').find('tr').eq(count).find('td').eq(0).text() == id_produto) { //se achou o produto que estamos deletando, vamos repor o estoque
+                    $('#tabelaitens').find('tr').eq(count).find('td').eq(2).text(parseInt($('#tabelaitens').find('tr').eq(count).find('td').eq(2).text()) + parseInt(quantidade_produto));
+                }
+            }
+
+            $(elemento).closest('tr').remove(); //deleta a linha na tabela do carrinho
+
+            
+            for( var i = 0; i < produtos_selecionados.length; i++){ //começa a tratativa para remover do array que será enviado via json
                if ( produtos_selecionados[i].id == idproduto) {
-                 produtos_selecionados.splice(i, 1);
+                 produtos_selecionados.splice(i, 1); //remove do array
                } 
             }
 
-            for( var i = 0; i < produtos_selecionados.length; i++){
+            valor_total = 0; 
+            for( var i = 0; i < produtos_selecionados.length; i++){ //reconta o valor total do carrinho
                valor_total += produtos_selecionados[i].valorunitario * produtos_selecionados[i].qtd;
             }
 
+            produtos_selecionados.valortotal = valor_total;
             $("#valortotal").text("R$" + valor_total);
         }
 
