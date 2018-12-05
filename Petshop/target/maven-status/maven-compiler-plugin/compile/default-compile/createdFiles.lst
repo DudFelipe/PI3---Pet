@@ -22,6 +22,7 @@ br/senac/tads/pi3a/petshop/DAO/RelatorioDAO.class
 br/senac/tads/pi3a/petshop/BLL/ClienteBLL.class
 org/json/JSONStringer.class
 org/json/JSONObject$Null.class
+br/senac/tads/pi3a/petshop/Servlets/LogoutServlet.class
 br/senac/tads/pi3a/petshop/Modelos/Venda.class
 br/senac/tads/pi3a/petshop/Servlets/ListaClienteServlet.class
 org/json/Property.class
@@ -38,6 +39,7 @@ br/senac/tads/pi3a/petshop/DAO/ServicoDAO.class
 org/json/HTTPTokener.class
 org/json/HTTP.class
 br/senac/tads/pi3a/petshop/filtro/AutorizacaoFilter.class
+br/senac/tads/pi3a/petshop/Servlets/HomeServlet.class
 br/senac/tads/pi3a/petshop/Servlets/RelatoriosServlet.class
 br/senac/tads/pi3a/petshop/Servlets/ExcluirClienteServlet.class
 br/senac/tads/pi3a/petshop/BLL/ProdutoBLL.class
@@ -50,6 +52,8 @@ br/senac/tads/pi3a/petshop/Servlets/PetsServlet.class
 br/senac/tads/pi3a/petshop/Utils/ConnectionUtils.class
 br/senac/tads/pi3a/petshop/DAO/FilialDAO.class
 br/senac/tads/pi3a/petshop/Servlets/ServicoServlet.class
+br/senac/tads/pi3a/petshop/Servlets/MasterServlet.class
+br/senac/tads/pi3a/petshop/Servlets/GerenteGeralServlet.class
 br/senac/tads/pi3a/petshop/Modelos/Usuario.class
 br/senac/tads/pi3a/petshop/DAO/VendaDAO.class
 org/json/JSONPointerException.class
@@ -58,11 +62,13 @@ org/json/CookieList.class
 org/json/Cookie.class
 org/json/JSONTokener.class
 br/senac/tads/pi3a/petshop/DAO/PetDAO.class
+br/senac/tads/pi3a/petshop/Servlets/FuncionarioServlet.class
 br/senac/tads/pi3a/petshop/DAO/ClienteDAO.class
 org/json/JSONException.class
 br/senac/tads/pi3a/petshop/Modelos/Funcionario.class
 org/json/XMLTokener.class
 org/json/XML.class
+br/senac/tads/pi3a/petshop/Servlets/GerenteFilialServlet.class
 org/json/CDL.class
 br/senac/tads/pi3a/petshop/BLL/ServicoBLL.class
 org/json/JSONML.class

@@ -20,13 +20,16 @@
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/HTTPTokener.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/ExcluirPetServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/JSONPointerException.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/GerenteGeralServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/ListaVendaServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Modelos/Filial.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/HomeServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/DAO/FuncionarioDAO.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Utils/UsuarioSistemaService.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/ListaClienteServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Modelos/Pet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/DAO/ProdutoDAO.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/FuncionarioServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/CookieList.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/DAO/ServicoDAO.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/Cookie.java
@@ -44,6 +47,7 @@
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/JSONML.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Modelos/Produto.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/ListaProdutoServlet.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/LogoutServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/BLL/ClienteBLL.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/BLL/RelatorioBLL.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Modelos/Funcionario.java
@@ -60,6 +64,8 @@
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/BLL/VendaBLL.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/JSONWriter.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/ProdutoServlet.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/GerenteFilialServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/XML.java
+/Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Servlets/MasterServlet.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/json/XMLTokener.java
 /Users/giovanebarreira/Desktop/PI3-Pet/PI3-Pet/Petshop/src/main/java/br/senac/tads/pi3a/petshop/Utils/ConnectionUtils.java

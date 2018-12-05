@@ -15,13 +15,13 @@ public class VendaBLL {
     public static void inserir(Venda v){
         
     }
-    
-    public static void alterar(Venda v){
-        
-    }
-    
-    public static void excluir(int id){
-        
+
+//    public static List<Venda> listar(String filtro) throws SQLException, ClassNotFoundException {
+//        return VendaDAO.listar(filtro);
+//    }
+
+    public static Venda obterVenda(int id) throws SQLException {
+        return VendaDAO.obterVenda(id);
     }
     
     public static void listar(String filtro){

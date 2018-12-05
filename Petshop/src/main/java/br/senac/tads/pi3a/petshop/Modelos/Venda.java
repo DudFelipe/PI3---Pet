@@ -18,6 +18,7 @@ public class Venda {
     private List<Produto> produtos;
     private List<Servico> servicos;
     private Float valorTotal;
+    private Date data;
 
 
     public Venda() {
@@ -32,12 +33,14 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
     
-    public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, Funcionario funcionario) {
+    
+    public Venda(Cliente cliente, Pet pet, List<Produto> produtos, List<Servico> servicos, Funcionario funcionario, Date data) {
         this.cliente = cliente;
         this.produtos = produtos;
         this.servicos = servicos;
         this.funcionario = funcionario;
-        
+        this.data = data;
+
     }
 
     public Cliente getCliente() {
