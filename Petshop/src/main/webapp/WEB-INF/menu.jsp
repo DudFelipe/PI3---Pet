@@ -27,14 +27,7 @@
                         </a>
                     </li>
                     </c:when>
-                    <c:otherwise>
-                     <hide><li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("vendas.jsp")){%> class="active" <%}%> >
-                        <a href="VendaServlet">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Vender
-                        </a>
-                    </li></hide>
-                    </c:otherwise>
+                    <c:otherwise> </c:otherwise>
                     </c:choose>
                     
                     <%--Verifica se o usuario tem o tipo de usuario para acessar a pagina produtos --%>
@@ -51,16 +44,7 @@
                         </a>
                     </li>
                     </c:when>
-                    <c:otherwise>
-                        <hide>
-                            <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("produtos.jsp")){%> class="active" <%}%> >
-                        <a href="#">
-                            <i class="glyphicon glyphicon-heart"></i>
-                            Produtos
-                        </a>
-                    </li>
-                        </hide>
-                    </c:otherwise>
+                    <c:otherwise></c:otherwise>
                     </c:choose>
                     
                     <%--Verifica se o usuario tem o tipo de usuario para acessar a pagina serviços --%>
@@ -77,17 +61,7 @@
 
                     </li>
                     </c:when>
-                    <c:otherwise>
-                        <hide>
-                            <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("servicos.jsp")){%> class="active" <%}%> >
-                        <a href="ServicoServlet">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Serviços
-                        </a>
-
-                    </li>
-                        </hide>
-                    </c:otherwise>
+                    <c:otherwise></c:otherwise>
                     </c:choose>
 
                     <%--Verifica se o usuario tem o tipo de usuario para acessar a pagina clientes --%>
@@ -104,16 +78,7 @@
                         </a>
                     </li>
                     </c:when>
-                    <c:otherwise>
-                        <hide>
-                            <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("cliente.jsp")){%> class="active" <%}%> >
-                        <a href="ClienteServlet">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Clientes 
-                        </a>
-                    </li>
-                        </hide>
-                    </c:otherwise>
+                    <c:otherwise></c:otherwise>
                     </c:choose>
                     
                     <%--Verifica se o usuario tem o tipo de usuario para acessar a pagina pets --%>
@@ -128,16 +93,7 @@
                         </a>
                     </li>
                     </c:when>
-                    <c:otherwise>
-                        <hide>
-                            <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("pets.jsp")){%> class="active" <%}%> >
-                        <a href="PetsServlet">
-                            <i class="glyphicon glyphicon-star"></i>
-                            Pets
-                        </a>
-                    </li>
-                        </hide>
-                    </c:otherwise>
+                    <c:otherwise></c:otherwise>
                     </c:choose>
                     
                     <%--Verifica se o usuario tem o tipo de usuario para acessar a pagina relatorios --%>
@@ -153,16 +109,7 @@
                         </a>
                     </li>
                     </c:when>
-                    <c:otherwise>
-                        <hide>
-                            <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Relatórios
-                        </a>
-                    </li>
-                        </hide>
-                    </c:otherwise>
+                    <c:otherwise></c:otherwise>
                     </c:choose>
                     
                     
