@@ -23,7 +23,7 @@
                         </li>
                     </c:if>
 
-                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6}">
+                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6 || sessionScope.usuario.tipoAcesso == 5}">
                         <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("produtos.jsp")){%> class="active" <%}%> >
                             <a href="ProdutoServlet">
                                 <i class="glyphicon glyphicon-heart"></i>
@@ -32,7 +32,7 @@
                         </li>
                     </c:if>
                        
-                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6}">
+                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6 || sessionScope.usuario.tipoAcesso == 5}">
                         <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("servicos.jsp")){%> class="active" <%}%> >
                             <a href="ServicoServlet">
                                 <i class="glyphicon glyphicon-home"></i>
@@ -42,7 +42,7 @@
                         </li>
                     </c:if>
 
-                    <c:if test="${sessionScope.usuario.tipoAcesso >= 2 && sessionScope.usuario.tipoAcesso <= 4}">
+                    <c:if test="${(sessionScope.usuario.tipoAcesso >= 2 && sessionScope.usuario.tipoAcesso <= 5)}">
                         <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("cliente.jsp")){%> class="active" <%}%> >
                             <a href="ClienteServlet">
                                 <i class="glyphicon glyphicon-user"></i>

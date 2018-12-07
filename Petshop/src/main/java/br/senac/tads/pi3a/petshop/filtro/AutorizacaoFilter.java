@@ -65,11 +65,11 @@ public class AutorizacaoFilter implements Filter {
                 return false;
             }
         } else if(pagina.equals("ServicoServlet")) {
-            if(tipoAcesso == 2 || tipoAcesso == 5 || tipoAcesso == 7) {
+            if(tipoAcesso == 2 || tipoAcesso == 7) {
                 return false;
             }
         } else if(pagina.equals("ProdutoServlet")) {
-            if(tipoAcesso == 2 || tipoAcesso == 5 || tipoAcesso == 7) {
+            if(tipoAcesso == 2 || tipoAcesso == 7) {
                 return false;
             }
         } else if(pagina.equals("PetsServlet")) {
@@ -77,7 +77,7 @@ public class AutorizacaoFilter implements Filter {
                 return false;
             }
         } else if(pagina.equals("ClienteServlet")) {
-            if(tipoAcesso >= 5) {
+            if(tipoAcesso >= 6) {
                 return false;
             }
         }
