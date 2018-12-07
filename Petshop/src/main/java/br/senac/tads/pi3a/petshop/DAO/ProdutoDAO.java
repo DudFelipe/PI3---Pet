@@ -5,6 +5,7 @@
  */
 package br.senac.tads.pi3a.petshop.DAO;
 
+import br.senac.tads.pi3a.petshop.Modelos.Filial;
 import br.senac.tads.pi3a.petshop.Modelos.Produto;
 import br.senac.tads.pi3a.petshop.Utils.ConnectionUtils;
 import java.sql.Connection;
@@ -20,8 +21,8 @@ import java.util.List;
  */
 public class ProdutoDAO {
     public static void inserir(Produto p) throws SQLException, Exception{
-        String sql = "INSERT INTO produto (nome, preco, fabricante, quantidade, modelo, codbarras) " +
-                     " VALUES (?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO produto (nome, preco, fabricante, estoque, modelo, codigodebarras, idFilial) " +
+                     " VALUES (?, ?, ?, ?, ?, ?, ?);";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -36,7 +37,8 @@ public class ProdutoDAO {
             pst.setString(3, p.getFabricante());
             pst.setInt(4, p.getQuantidade());
             pst.setString(5, p.getModelo());
-            pst.setLong(6, p.getCodBarras());
+            pst.setString(6, p.getCodBarras());
+            pst.setLong(7, p.getFilial().getId());
             
             pst.execute(); //Executando a query e realizando a inserção no banco de dados.
         }
@@ -50,7 +52,7 @@ public class ProdutoDAO {
     }
     
     public static void alterar(Produto p) throws SQLException, ClassNotFoundException{
-        String sql = "UPDATE produto SET nome = ?, preco = ?, fabricante = ?, quantidade = ?, modelo = ?, CodBarras = ?";
+        String sql = "UPDATE produto SET nome = ?, preco = ?, fabricante = ?, estoque = ?, modelo = ?, codigodebarras = ?, idFilial = ? WHERE idProduto = ?";
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -66,7 +68,9 @@ public class ProdutoDAO {
             pst.setString(3, p.getFabricante());
             pst.setInt(4, p.getQuantidade());
             pst.setString(5, p.getModelo());
-            pst.setLong(6, p.getCodBarras());
+            pst.setString(6, p.getCodBarras());
+            pst.setInt(7, p.getFilial().getId());
+            pst.setInt(8, p.getIdProduto());
             
             pst.execute(); //Executando a instrução SQL e realizando a alteração dos dados
         }
@@ -105,7 +109,9 @@ public class ProdutoDAO {
     
     public static List<Produto> listar(String filtro) throws SQLException{
         
-        String sql = "SELECT * FROM produto WHERE " + filtro;
+        String sql = "SELECT * FROM produto ";
+                if(filtro.length() > 0)
+                {sql = sql +"WHERE " + filtro;}
         
         Connection conn = null;
         PreparedStatement pst = null;
@@ -119,14 +125,19 @@ public class ProdutoDAO {
             ResultSet rs = pst.executeQuery(); //Executando o comando SELECT e armazenando os dados em um ResultSet
             
             while(rs.next()){ 
-                Produto p = new Produto(); //Cria um novo cliente
+               Produto p = new Produto();
                 
+                p.setIdProduto(rs.getInt("idProduto"));
+                p.setCodBarras(rs.getString("codigodebarras"));
+                p.setFabricante(rs.getString("fabricante"));
+                p.setModelo(rs.getString("modelo"));
                 p.setNome(rs.getString("nome"));
                 p.setPreco(rs.getBigDecimal("preco"));
-                p.setFabricante(rs.getString("fabricante"));
-                p.setQuantidade(rs.getInt("quantidade"));
-                p.setModelo(rs.getString("modelo"));
-                p.setCodBarras(rs.getLong("codbarras"));
+                p.setQuantidade(rs.getInt("estoque"));
+                
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                p.setFilial(f);
                 
                 listaProduto.add(p); //Com todos os dados do cliente armazenado, adiciona o cliente na lista.
             }
@@ -144,4 +155,50 @@ public class ProdutoDAO {
                 conn.close();
         }
     }
+    
+    public static Produto obterProduto(int id) throws SQLException{
+        String sql = "SELECT * FROM produto WHERE idProduto = ?";
+        
+        Connection conn = null;
+        PreparedStatement pst = null;
+        
+        try{
+            conn = ConnectionUtils.getConnection();
+            pst = conn.prepareStatement(sql);
+            
+            pst.setInt(1, id);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                Produto p = new Produto();
+                
+                p.setIdProduto(rs.getInt("idProduto"));
+                p.setCodBarras(rs.getString("codigodebarras"));
+                p.setFabricante(rs.getString("fabricante"));
+                p.setModelo(rs.getString("modelo"));
+                p.setNome(rs.getString("nome"));
+                p.setPreco(rs.getBigDecimal("preco"));
+                p.setQuantidade(rs.getInt("estoque"));
+                
+                Filial f = new Filial();
+                f = FilialDAO.obterFilial(rs.getInt("idFilial"));
+                p.setFilial(f);
+                
+                return p;
+            }
+        }
+        catch(Exception ex){
+            return null;
+        }
+        finally{
+            if(pst != null && !pst.isClosed())
+                pst.close();
+            
+            if(conn != null && !conn.isClosed())
+                conn.close();
+        }
+        return null;
+    }
+    
 }

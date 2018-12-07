@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="assets/css/testeLoginStyle.css" type="text/css" rel="stylesheet">
-    <title>Hello, world!</title>
+    <title>PetTades - Login</title>
   </head>
   <body>
       <h1>
@@ -49,11 +49,7 @@
                     <label for="exampleInputPassword1">Senha</label>
                     <input type="password" class="form-control patas" id="exampleInputPassword1" name="senha" placeholder="Senha">
                   </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1"> Lembrar</label>
-                    <a href="esqueciSenha.html" class="link"> Esqueci a senha</a>
-                  </div>
+                  
                   <div class="col-md-12">
                     <button type="submit" class="btn btn-dark btn-lg btn-block">Entrar</button>
                   </div>

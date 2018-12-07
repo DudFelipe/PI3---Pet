@@ -12,56 +12,76 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p style="text-align: center; color: white">Nome do Funcionário</p>
-
-                    <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("vendas.jsp")){%> class="active" <%}%> >
-                        <a href="VendaServlet">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Vender
-                        </a>
-                    </li>
-
-                    <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("produtos.jsp")){%> class="active" <%}%> >
-                        <a href="#">
-                            <i class="glyphicon glyphicon-heart"></i>
-                            Produtos
-                        </a>
-                    </li>
-
-                    <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("servicos.jsp")){%> class="active" <%}%> >
-                        <a href="ServicoServlet">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Serviços
-                        </a>
-
-                    </li>
-
-                    <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("cliente.jsp")){%> class="active" <%}%> >
-                        <a href="ClienteServlet">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Clientes 
-                        </a>
-                    </li>
+                    <p style="text-align: center; color: white">${sessionScope.usuario.nome}</p>
                     
-                    <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("pets.jsp")){%> class="active" <%}%> >
-                        <a href="PetsServlet">
-                            <i class="glyphicon glyphicon-star"></i>
-                            Pets
+                    <c:if test="${sessionScope.usuario.tipoAcesso >= 2 && sessionScope.usuario.tipoAcesso <= 4}">
+                        <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("vendas.jsp")){%> class="active" <%}%> >
+                            <a href="VendaServlet">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                                Vender
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6}">
+                        <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("produtos.jsp")){%> class="active" <%}%> >
+                            <a href="ProdutoServlet">
+                                <i class="glyphicon glyphicon-heart"></i>
+                                Produtos
+                            </a>
+                        </li>
+                    </c:if>
+                       
+                    <c:if test="${sessionScope.usuario.tipoAcesso == 3 || sessionScope.usuario.tipoAcesso == 4 || sessionScope.usuario.tipoAcesso == 6}">
+                        <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("servicos.jsp")){%> class="active" <%}%> >
+                            <a href="ServicoServlet">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Serviços
+                            </a>
+
+                        </li>
+                    </c:if>
+
+                    <c:if test="${sessionScope.usuario.tipoAcesso >= 2 && sessionScope.usuario.tipoAcesso <= 4}">
+                        <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("cliente.jsp")){%> class="active" <%}%> >
+                            <a href="ClienteServlet">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Usuários 
+                            </a>
+                        </li>
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.usuario.tipoAcesso >= 2 && sessionScope.usuario.tipoAcesso <= 4}">
+                        <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("pets.jsp")){%> class="active" <%}%> >
+                            <a href="PetsServlet">
+                                <i class="glyphicon glyphicon-star"></i>
+                                Pets
+                            </a>
+                        </li>
+                    </c:if>
+                    
+                   <c:if test="${sessionScope.usuario.tipoAcesso > 2}">
+                        <li>
+                            <a href="RelatoriosServlet">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                Relatórios
+                            </a>
+                        </li>
+                   </c:if>
+                    
+                     <li <% if( request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/")+1).equals("sobreEmpresa.jsp")){%> class="active" <%}%> >
+                        <a href="SobreEmpresaServlet">
+                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                            Sobre a empresa
                         </a>
                     </li>
 
                     <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-stats"></i>
-                            Relatórios
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
+                        <a href="logout">
                             <i class="glyphicon glyphicon-off"></i>
                             Sair
                         </a>
                     </li>
+                    
                 </ul>
             </nav>

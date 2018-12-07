@@ -43,14 +43,33 @@ public class VendaServlet extends HttpServlet {
             throws ServletException, IOException{
         //listando produtos para a venda
         List<Servico> servicos = null;
+        List<Produto> produtos = null;
+        
+        // Verifica se usuario ja esta logado
+        HttpSession sessao = request.getSession();
+        if (sessao.getAttribute("usuario") == null) {
+            // Redirecionar para tela de login
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+        
+        Usuario usuariologado = null;
+        usuariologado = (Usuario) sessao.getAttribute("usuario");
         
         try {
-            servicos = ServicoDAO.listar();
+            servicos = ServicoDAO.listar("idFilial = " + usuariologado.getFilial().getId());
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        try {
+            produtos = ProdutoDAO.listar("idFilial = " + usuariologado.getFilial().getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(VendaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         request.setAttribute("servicos", servicos);
+        request.setAttribute("produtos", produtos);
          
         //Listando clientes
         List<Cliente> clientes =null;

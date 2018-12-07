@@ -57,6 +57,17 @@
                                         <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-plus" aria-hidden="true"></span></td>
                                     </tr> 
                                 </c:forEach>
+                                    
+                                <c:forEach items="${produtos}" var="p">
+                                   <tr>
+                                       <td>${p.idProduto}</td>
+                                        <td>${p.nome} ${p.modelo}</td>
+                                        <td>${p.quantidade}</td>
+                                        <td>R$${p.preco}</td>
+                                        <td>Produto</td>
+                                        <td style="text-align: center;"><span class="adicionarproduto glyphicon glyphicon-plus" aria-hidden="true"></span></td>
+                                    </tr> 
+                                </c:forEach>
 
                             </tbody>
                         </table>

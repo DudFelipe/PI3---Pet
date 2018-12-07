@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
                 // Login com sucesso.
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
-                response.sendRedirect(request.getContextPath() + "/ClienteServlet");
+                response.sendRedirect(request.getContextPath() + "/SobreEmpresaServlet");
                 return;
             }
         }

@@ -102,8 +102,10 @@ public class ServicoDAO {
         }
     }
     
-    public static List<Servico> listar() throws SQLException, ClassNotFoundException{
-        String sql = "SELECT * FROM servico";
+    public static List<Servico> listar(String filtro) throws SQLException, ClassNotFoundException{
+        String sql = "SELECT * FROM servico ";
+         if(filtro.length() > 0)
+                {sql = sql +"WHERE " + filtro;}
         
         Connection conn = null;
         PreparedStatement pst = null;

@@ -38,7 +38,7 @@ public class ServicoBLL {
     }
     
     public static List<Servico> listar() throws SQLException, ClassNotFoundException{
-        return ServicoDAO.listar();
+        return ServicoDAO.listar("");
     }
     
     public static Servico obterServico(int id) throws SQLException{

@@ -15,6 +15,7 @@ import java.util.List;
  *
  * @author Dud Felipe
  */
+
 public class ProdutoBLL {
     public static void inserir(Produto p) throws Exception{
         if(p.getNome().trim().length() == 0){
@@ -72,4 +73,9 @@ public class ProdutoBLL {
     public static List<Produto> listar(String filtro)throws SQLException, ClassNotFoundException{
         return ProdutoDAO.listar(filtro);
     }
+    
+    public static Produto obterProduto(int id) throws SQLException{
+        return ProdutoDAO.obterProduto(id);
+}
+
 }
